@@ -1,13 +1,5 @@
 # Wrapper für die persönliche Agenten-Unterstützung
 
-## Was ist ein Wrapper?
-Ein Wrapper ist hier ein kurzer Arbeitsauftrag für dich bzw. deinen persönlichen Agenten. Er sagt:
-- welche Datei als zentrale Projektquelle dient,
-- wie die Unterstützung in diesem Repo genutzt werden soll,
-- und worauf geachtet werden muss.
-
-Der Wrapper selbst ist nicht der eigentliche Inhalts-Prompt, sondern eine Nutzungsanweisung, die du beim Starten deines Agenten-Workflows einfügen kannst.
-
 ## Zweck dieser Datei
 - Der Auftrag `2026-04-10-LN-Auftrag-1.md` ist die zentrale Referenz für deine Lehrveranstaltung.
 - Wenn du im Repo `project-slides/GenKI2-SemA-ZB` arbeitest, soll dein Agent diesen Auftrag kennen.
