@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <!--
+    Comprehensive Moodle XML Template v4.0
+    All question types aligned with Moodle 4.4+
+
+    Guidelines:
+    - Use UTF-8 encoding
+    - Replace placeholders [TEXT] with actual content
+    - Maintain fraction values as decimals (0.0 to 1.0)
+    - One category per import recommended
+    - Version tag enables format compatibility
+
+    Structure:
+    - Category anchors quiz in course structure
+    - Description provides metadata context
+    - Question types cover 23 major Moodle types
+    - Each type includes: name, questiontext, tags, answers, feedback
+  -->
+
+  <!-- ============================================ -->
+  <!-- CATEGORY & METADATA                         -->
+  <!-- ============================================ -->
+
+  <question type="category">
+    <category>
+      <text>$course$/[THEMA]/[SUBTHEMA]</text>
+    </category>
+  </question>
+
+  <question type="description">
+    <name>
+      <text>Beschreibung: Quiz Kontext &amp; Anweisungen</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[
+<h2>[QUIZ-TITEL]</h2>
+<p><strong>Zielgruppe:</strong> [ZIELGRUPPE]</p>
+<p><strong>Dauer:</strong> [DAUER] Minuten</p>
+<p><strong>Anweisungen:</strong> [ANWEISUNGEN]</p>
+<p><strong>Schwierigkeitsgrad:</strong> [LEVEL: leicht/mittel/schwer]</p>
+      ]]></text>
+    </questiontext>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>[THEMA]</text></tag>
+    </tags>
+  </question>
+
+  <!-- ============================================ -->
+  <!-- 1. MULTIPLE CHOICE (Single Answer)         -->
+  <!-- ============================================ -->
+
+  <question type="multichoice">
+    <name>
+      <text>MC_01_Einzelantwort_[TOPIC]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[[MC-FRAGE-TEXT]]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[[ALLGEMEINES FEEDBACK ZUR FRAGE]]]></text>
+    </generalfeedback>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>[THEMA]</text></tag>
+      <tag><text>multichoice</text></tag>
+    </tags>
+
+    <answer fraction="100">
+      <text>[KORREKTE ANTWORT]</text>
+      <feedback><text>[FEEDBACK ZUR RICHTIGEN ANTWORT]</text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text>[FALSCHE ANTWORT 1]</text>
+      <feedback><text>[DISTRAKTOR-FEEDBACK 1]</text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text>[FALSCHE ANTWORT 2]</text>
+      <feedback><text>[DISTRAKTOR-FEEDBACK 2]</text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text>[FALSCHE ANTWORT 3]</text>
+      <feedback><text>[DISTRAKTOR-FEEDBACK 3]</text></feedback>
+    </answer>
+
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Richtig!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Teilweise richtig.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Leider falsch.</text>
+    </incorrectfeedback>
+  </question>
+
+  <!-- ============================================ -->
+  <!-- 2. MULTIPLE CHOICE (Multiple Answers)      -->
+  <!-- ============================================ -->
+
+  <question type="multichoice">
+    <name>
+      <text>MC_02_Mehrfachantwort_[TOPIC]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[[FRAGE MIT MEHRFACHANTWORT]]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[[ALLGEMEINES FEEDBACK]]]></text>
+    </generalfeedback>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>[THEMA]</text></tag>
+    </tags>
+
+    <answer fraction="50">
+      <text>[KORREKTE ANTWORT 1]</text>
+      <feedback><text>[FEEDBACK]</text></feedback>
+    </answer>
+    <answer fraction="50">
+      <text>[KORREKTE ANTWORT 2]</text>
+      <feedback><text>[FEEDBACK]</text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text>[FALSCHE ANTWORT]</text>
+      <feedback><text>[FEEDBACK]</text></feedback>
+    </answer>
+
+    <shuffleanswers>1</shuffleanswers>
+    <single>false</single>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Alle richtigen Antworten gewählt!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Teilweise korrekt.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Keine oder teilweise richtige Antworten.</text>
+    </incorrectfeedback>
+  </question>
+
+  <!-- ============================================ -->
+  <!-- 3. TRUE/FALSE                               -->
+  <!-- ============================================ -->
+
+  <question type="truefalse">
+    <name>
+      <text>TF_01_Wahrfalsch_[TOPIC]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[[AUSSAGE WAHR/FALSCH]]]></text>
+    </questiontext>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>truefalse</text></tag>
+    </tags>
+
+    <answer fraction="100">
+      <text>true</text>
+      <feedback><text>[FEEDBACK WENN WAHR]</text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text>false</text>
+      <feedback><text>[FEEDBACK WENN FALSCH]</text></feedback>
+    </answer>
+  </question>
+
+  <!-- ============================================ -->
+  <!-- 4. SHORT ANSWER                             -->
+  <!-- ============================================ -->
+
+  <question type="shortanswer">
+    <name>
+      <text>SA_01_Kurzantwort_[TOPIC]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[[FRAGE MIT TEXTANTWORT]]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[[ALLGEMEINES FEEDBACK]]]></text>
+    </generalfeedback>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>shortanswer</text></tag>
+    </tags>
+
+    <answer fraction="100">
+      <text>[KORREKTE ANTWORT 1]</text>
+      <feedback><text>[FEEDBACK]</text></feedback>
+    </answer>
+    <answer fraction="100">
+      <text>[KORREKTE ANTWORT 2]</text>
+      <feedback><text>[FEEDBACK]</text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text>*</text>
+      <feedback><text>Die korrekte Antwort ist: [KORREKTE ANTWORT]</text></feedback>
+    </answer>
+
+    <usecase>0</usecase>
+  </question>
+
+  <!-- ============================================ -->
+  <!-- 5. MATCHING / ZUORDNUNG                     -->
+  <!-- ============================================ -->
+
+  <question type="match">
+    <name>
+      <text>MA_01_Zuordnung_[TOPIC]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[[ZUORDNUNGS-ANWEISUNG]]]></text>
+    </questiontext>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>matching</text></tag>
+    </tags>
+
+    <subquestion>
+      <text>[LINKS-ITEM 1]</text>
+      <answer><text>[RECHTS-ANTWORT 1]</text></answer>
+    </subquestion>
+    <subquestion>
+      <text>[LINKS-ITEM 2]</text>
+      <answer><text>[RECHTS-ANTWORT 2]</text></answer>
+    </subquestion>
+    <subquestion>
+      <text>[LINKS-ITEM 3]</text>
+      <answer><text>[RECHTS-ANTWORT 3]</text></answer>
+    </subquestion>
+    <subquestion>
+      <text>[LINKS-ITEM 4]</text>
+      <answer><text>[RECHTS-ANTWORT 4]</text></answer>
+    </subquestion>
+
+    <shuffleanswers>true</shuffleanswers>
+  </question>
+
+  <!-- ============================================ -->
+  <!-- 6. NUMERICAL                                -->
+  <!-- ============================================ -->
+
+  <question type="numerical">
+    <name>
+      <text>NUM_01_Numerisch_[TOPIC]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[[RECHENAUFGABE]]]></text>
+    </questiontext>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>numerical</text></tag>
+    </tags>
+
+    <answer fraction="100">
+      <text>[ZAHLENWERT]</text>
+      <tolerance>[TOLERANZBEREICH, z.B. 0.5]</tolerance>
+      <tolerancetype>relative</tolerancetype>
+      <correctanswerformat>1</correctanswerformat>
+      <correctanswerlength>2</correctanswerlength>
+      <feedback><text>[FEEDBACK]</text></feedback>
+    </answer>
+
+    <unitsleft>0</unitsleft>
+  </question>
+
+  <!-- ============================================ -->
+  <!-- 7. ESSAY / FREE TEXT                        -->
+  <!-- ============================================ -->
+
+  <question type="essay">
+    <name>
+      <text>ES_01_Freitext_[TOPIC]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[[ESSAY-FRAGE]]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[[HINWEISE FÜR LEHRPERSON]]]></text>
+    </generalfeedback>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>essay</text></tag>
+    </tags>
+
+    <answer fraction="0">
+      <text></text>
+    </answer>
+
+    <responseformat>html</responseformat>
+    <responserequired>1</responserequired>
+    <responsefieldlines>15</responsefieldlines>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <graderinfo format="html">
+      <text><![CDATA[<p><strong>Musterlösung / Bewertungskriterien:</strong></p><ul><li>[KRITERIUM 1]</li><li>[KRITERIUM 2]</li></ul>]]></text>
+    </graderinfo>
+  </question>
+
+  <!-- ============================================ -->
+  <!-- 8. CLOZE / LÜCKENTEXT                       -->
+  <!-- ============================================ -->
+
+  <question type="cloze">
+    <name>
+      <text>CLOZE_01_Lueckentext_[TOPIC]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[
+<p>Der prozess hat {1:MULTICHOICE:=OPTION1~OPTION2~OPTION3} mehrere Phasen.
+In der ersten Phase werden {2:SHORTANSWER:=[ANTWORT1]~[ANTWORT2]~*} durchgeführt.</p>
+      ]]></text>
+    </questiontext>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>cloze</text></tag>
+    </tags>
+
+    <answer fraction="0">
+      <text></text>
+    </answer>
+  </question>
+
+  <!-- ============================================ -->
+  <!-- 9. CALCULATED (Simple)                      -->
+  <!-- ============================================ -->
+
+  <question type="calculatedsimple">
+    <name>
+      <text>CALC_01_EinfachBerechnet_[TOPIC]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[
+<p>Berechne: {a} + {b} = ?</p>
+<p>Weitere Erklärung: {a} und {b} sind zufällige Variablen.</p>
+      ]]></text>
+    </questiontext>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>calculated</text></tag>
+    </tags>
+
+    <answer fraction="100">
+      <text>{a}+{b}</text>
+      <tolerance>0.01</tolerance>
+      <feedback><text>[FEEDBACK]</text></feedback>
+      <tolerance_type>relative</tolerance_type>
+    </answer>
+
+    <!-- Dataset Definition -->
+    <dataset_definitions>
+      <dataset_definition>
+        <status>private</status>
+        <name>a</name>
+        <type>calculated</type>
+        <distribution>uniform</distribution>
+        <max>100</max>
+        <min>1</min>
+        <length>0</length>
+        <decimals>0</decimals>
+        <itemcount>10</itemcount>
+        <dataset_items>
+          <dataset_item>
+            <number>1</number>
+            <value>5</value>
+          </dataset_item>
+          <!-- ... weitere Items ... -->
+        </dataset_items>
+      </dataset_definition>
+    </dataset_definitions>
+  </question>
+
+  <!-- ============================================ -->
+  <!-- 10. ORDERING / ANORDNUNG                    -->
+  <!-- ============================================ -->
+
+  <question type="ordering">
+    <name>
+      <text>ORD_01_Anordnung_[TOPIC]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[[ANWEISEUNG: ORDNE IN RICHTIGE REIHENFOLGE]]]></text>
+    </questiontext>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>ordering</text></tag>
+    </tags>
+
+    <answer fraction="100">
+      <text>[ITEM 1 IN KORREKTER REIHENFOLGE]</text>
+    </answer>
+    <answer fraction="100">
+      <text>[ITEM 2]</text>
+    </answer>
+    <answer fraction="100">
+      <text>[ITEM 3]</text>
+    </answer>
+    <answer fraction="100">
+      <text>[ITEM 4]</text>
+    </answer>
+  </question>
+
+  <!-- ============================================ -->
+  <!-- 11. KPRIME (ETH Typ)                        -->
+  <!-- ============================================ -->
+
+  <question type="kprime">
+    <name>
+      <text>KP_01_Kprime_[TOPIC]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[[4 AUSSAGEN ZU RICHTIG/FALSCH BEWERTEN]]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[[ALLGEMEINES FEEDBACK]]]></text>
+    </generalfeedback>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>kprime</text></tag>
+    </tags>
+
+    <scoringmethod><text>subpoints</text></scoringmethod>
+    <shuffleanswers>true</shuffleanswers>
+    <numberofrows>4</numberofrows>
+    <numberofcolumns>2</numberofcolumns>
+
+    <row number="1">
+      <optiontext format="html"><text><![CDATA[[AUSSAGE 1]]]></text></optiontext>
+      <feedbacktext format="html"><text><![CDATA[[FEEDBACK]]]></text></feedbacktext>
+    </row>
+    <row number="2">
+      <optiontext format="html"><text><![CDATA[[AUSSAGE 2]]]></text></optiontext>
+      <feedbacktext format="html"><text><![CDATA[[FEEDBACK]]]></text></feedbacktext>
+    </row>
+    <row number="3">
+      <optiontext format="html"><text><![CDATA[[AUSSAGE 3]]]></text></optiontext>
+      <feedbacktext format="html"><text><![CDATA[[FEEDBACK]]]></text></feedbacktext>
+    </row>
+    <row number="4">
+      <optiontext format="html"><text><![CDATA[[AUSSAGE 4]]]></text></optiontext>
+      <feedbacktext format="html"><text><![CDATA[[FEEDBACK]]]></text></feedbacktext>
+    </row>
+
+    <column number="1">
+      <responsetext format="moodle_auto_format"><text>Richtig</text></responsetext>
+    </column>
+    <column number="2">
+      <responsetext format="moodle_auto_format"><text>Falsch</text></responsetext>
+    </column>
+
+    <!-- Correct mappings (1=Richtig, 2=Falsch) -->
+    <weight rownumber="1" columnnumber="1"><value>1.000</value></weight>
+    <weight rownumber="1" columnnumber="2"><value>0.000</value></weight>
+    <weight rownumber="2" columnnumber="1"><value>0.000</value></weight>
+    <weight rownumber="2" columnnumber="2"><value>1.000</value></weight>
+    <weight rownumber="3" columnnumber="1"><value>1.000</value></weight>
+    <weight rownumber="3" columnnumber="2"><value>0.000</value></weight>
+    <weight rownumber="4" columnnumber="1"><value>0.000</value></weight>
+    <weight rownumber="4" columnnumber="2"><value>1.000</value></weight>
+  </question>
+
+  <!-- ============================================ -->
+  <!-- 12. MTF (Multiple True/False)               -->
+  <!-- ============================================ -->
+
+  <question type="mtf">
+    <name>
+      <text>MTF_01_MultipleTruefalse_[TOPIC]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[[MEHRERE AUSSAGEN ZU BEWERTEN]]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[[ALLGEMEINES FEEDBACK]]]></text>
+    </generalfeedback>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>mtf</text></tag>
+    </tags>
+
+    <scoringmethod><text>subpoints</text></scoringmethod>
+    <shuffleanswers>true</shuffleanswers>
+    <numberofrows>5</numberofrows>
+    <numberofcolumns>2</numberofcolumns>
+
+    <row number="1">
+      <optiontext format="html"><text><![CDATA[[AUSSAGE 1]]]></text></optiontext>
+      <feedbacktext format="html"><text><![CDATA[[FEEDBACK]]]></text></feedbacktext>
+    </row>
+    <row number="2">
+      <optiontext format="html"><text><![CDATA[[AUSSAGE 2]]]></text></optiontext>
+      <feedbacktext format="html"><text><![CDATA[[FEEDBACK]]]></text></feedbacktext>
+    </row>
+    <row number="3">
+      <optiontext format="html"><text><![CDATA[[AUSSAGE 3]]]></text></optiontext>
+      <feedbacktext format="html"><text><![CDATA[[FEEDBACK]]]></text></feedbacktext>
+    </row>
+    <row number="4">
+      <optiontext format="html"><text><![CDATA[[AUSSAGE 4]]]></text></optiontext>
+      <feedbacktext format="html"><text><![CDATA[[FEEDBACK]]]></text></feedbacktext>
+    </row>
+    <row number="5">
+      <optiontext format="html"><text><![CDATA[[AUSSAGE 5]]]></text></optiontext>
+      <feedbacktext format="html"><text><![CDATA[[FEEDBACK]]]></text></feedbacktext>
+    </row>
+
+    <column number="1">
+      <responsetext format="moodle_auto_format"><text>Richtig</text></responsetext>
+    </column>
+    <column number="2">
+      <responsetext format="moodle_auto_format"><text>Falsch</text></responsetext>
+    </column>
+
+    <weight rownumber="1" columnnumber="1"><value>1.000</value></weight>
+    <weight rownumber="1" columnnumber="2"><value>0.000</value></weight>
+    <weight rownumber="2" columnnumber="1"><value>0.000</value></weight>
+    <weight rownumber="2" columnnumber="2"><value>1.000</value></weight>
+    <weight rownumber="3" columnnumber="1"><value>1.000</value></weight>
+    <weight rownumber="3" columnnumber="2"><value>0.000</value></weight>
+    <weight rownumber="4" columnnumber="1"><value>0.000</value></weight>
+    <weight rownumber="4" columnnumber="2"><value>1.000</value></weight>
+    <weight rownumber="5" columnnumber="1"><value>1.000</value></weight>
+    <weight rownumber="5" columnnumber="2"><value>0.000</value></weight>
+  </question>
+
+  <!-- ============================================ -->
+  <!-- 13. WORDSELECT (Wörter markieren)           -->
+  <!-- ============================================ -->
+
+  <question type="wordselect">
+    <name>
+      <text>WS_01_Woertermarkieren_[TOPIC]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[
+<p><strong>Markiere die Wörter in Klammern:</strong></p>
+<p>Dies ist ein [WORT1] mit mehreren [WORT2] die gekennzeichnet [WORT3] sind.</p>
+      ]]></text>
+    </questiontext>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>wordselect</text></tag>
+    </tags>
+
+    <introduction><![CDATA[<p>Markiere die ZAHL Wörter oder Begriffe (durch Anklicken).</p>]]></introduction>
+    <delimitchars>[]</delimitchars>
+    <wordpenalty>1.0</wordpenalty>
+
+    <answer fraction="100" format="moodle_auto_format">
+      <text>WORT1</text>
+      <feedback format="moodle_auto_format"><text></text></feedback>
+    </answer>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>WORT2</text>
+      <feedback format="moodle_auto_format"><text></text></feedback>
+    </answer>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>WORT3</text>
+      <feedback format="moodle_auto_format"><text></text></feedback>
+    </answer>
+  </question>
+
+  <!-- ============================================ -->
+  <!-- 14. RANDOM SHORT MATCH (Zufällige KA-ZO)   -->
+  <!-- ============================================ -->
+
+  <question type="randomsamatch">
+    <name>
+      <text>RSM_01_ZuaelligeKurzantzuordnung_[TOPIC]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[[ANWEISUNG FÜR ZUFÄLLIGE ZUORDNUNG]]]></text>
+    </questiontext>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>randomsamatch</text></tag>
+    </tags>
+
+    <subquestion>
+      <text>[ITEM 1]</text>
+      <answer><text>[LÖSUNG 1]</text></answer>
+    </subquestion>
+    <subquestion>
+      <text>[ITEM 2]</text>
+      <answer><text>[LÖSUNG 2]</text></answer>
+    </subquestion>
+    <subquestion>
+      <text>[ITEM 3]</text>
+      <answer><text>[LÖSUNG 3]</text></answer>
+    </subquestion>
+
+    <choose>3</choose>
+  </question>
+
+  <!-- ============================================ -->
+  <!-- 15. DRAG&DROP ON TEXT (Markierungen)       -->
+  <!-- ============================================ -->
+
+  <!-- NOTE: ddmarker ist komplex; XML-Export oft fehlerhaft -->
+  <!-- Empfehlung: Manuell in Moodle UI erstellen oder Drag&Drop-Plugin verwenden -->
+
+  <question type="ddmarker">
+    <name>
+      <text>DDM_01_DragDropText_[TOPIC]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[[TEXT MIT MARKIERUNGSANFORDERUNG]]]></text>
+    </questiontext>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>dragdrop</text></tag>
+    </tags>
+    <!--
+      Hinweis: ddmarker-Struktur ist weniger dokumentiert.
+      Best Practice: Manuelle Erstellung in Moodle UI empfohlen.
+    -->
+  </question>
+
+  <!-- ============================================ -->
+  <!-- 16. DRAWING (Freihandzeichnen)              -->
+  <!-- ============================================ -->
+
+  <!-- NOTE: drawing braucht Basis-Bild; nur empfohlen, wenn Bild vorhanden -->
+  <!-- Empfehlung: Manuell in Moodle UI erstellen  -->
+
+  <question type="drawing">
+    <name>
+      <text>DRAW_01_Freihandzeichnen_[TOPIC]</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text>[ZEICHNUNGS-AUFGABE]</text>
+    </questiontext>
+    <tags>
+      <tag><text>[FACH]</text></tag>
+      <tag><text>drawing</text></tag>
+    </tags>
+
+    <drawingmode>1</drawingmode>
+    <backgrounduploaded>1</backgrounduploaded>
+    <alloweraser>0</alloweraser>
+    <!--
+      Hinweis: drawing erfordert Hintergrund-Bild.
+      Base64 oder separate Datei-Upload erforderlich.
+    -->
+  </question>
+
+  <!-- ============================================ -->
+  <!-- NOTES                                       -->
+  <!-- ============================================ -->
+
+  <!--
+    TYPEN NICHT IN DIESEM TEMPLATE (zu spezialisiert oder fehleranfällig):
+
+    - molsimilarity: Nur für Chemie-Molekularstrukturen, spezielle Plugin erforderlich
+    - ddimageortext: Drag&Drop auf Bild – komplex, manuell bevorzugt
+    - calculatedmulti: Berechnete MC – sehr komplex, weniger dokumentiert
+    - Andere Drag&Drop Varianten: ddwtos, etc. – besser über Moodle UI erstellen
+
+    BEST PRACTICES:
+    1. Immer Category-Anker setzen für Navigation
+    2. Generelle Feedback-Ebenen nutzen (answer feedback + general feedback)
+    3. Tags für Themen und Typ-Kennzeichnung verwenden
+    4. shuffle=1 für MC/Match (außer wenn Reihenfolge wichtig)
+    5. Beim Import: Kategorien vorher überprüfen
+    6. Version-Info bewahren für zukünftige Updates
+
+    EDIT-ANLEITUNG:
+    - [PLATZHALTER] durch echte Inhalte ersetzen
+    - Fragetext mit CDATA umhüllen für XML-Sicherheit
+    - Bruchsteile (fraction) immer als Dezimal (z.B. 0.5, nicht 50%)
+    - Feedback prägnant und konstruktiv halten
+    - Ein Quiz pro Import-Session
+  -->
+
+</quiz>

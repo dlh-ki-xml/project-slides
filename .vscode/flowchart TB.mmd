@@ -1,0 +1,30 @@
+flowchart TB
+    subgraph ui[Benutzer-Interface]
+        notebook[Jupyter Notebook]
+        webui[Spaetere Web UI]
+    end
+
+    subgraph parser[Parser-Schicht]
+        parsecore[pymupdf]
+        ocrmod[OCR mit tesseract optional]
+        media[Bild-Extraktion]
+        latex[Formeln zu LaTeX]
+    end
+
+    subgraph llm[LLM-Analyse-Schicht]
+        qtype[Fragetyp erkennen]
+        feedback[Feedbacks generieren]
+        meta[Titel und Tags vorschlagen]
+        conf[Confidence Scores]
+    end
+
+    subgraph export[Moodle-XML-Export]
+        jsonxml[JSON nach XML]
+        validate[Validierung]
+        cleanup[Sofortloeschung temporaerer Daten]
+    end
+
+    notebook --> parser
+    webui --> parser
+    parser --> llm
+    llm --> export
