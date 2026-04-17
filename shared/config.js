@@ -14,19 +14,19 @@ Reveal.initialize({
       {
         id: "toggle-overview",
         title: "Overview",
-        icon: '<i class="fa fa-th"></i>',
+        icon: '<i class="fas fa-th"></i>',
         action: "Reveal.toggleOverview();",
       },
       {
         id: "toggle-chalkboard",
         title: "Chalkboard",
-        icon: '<i class="fa fa-pen-square"></i>',
+        icon: '<i class="fas fa-pen-square"></i>',
         action: "RevealChalkboard.toggleChalkboard();",
       },
       {
         id: "toggle-fullscreen",
         title: "Fullscreen",
-        icon: '<i class="fa fa-expand"></i>',
+        icon: '<i class="fas fa-expand"></i>',
         action:
           "document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();",
       },

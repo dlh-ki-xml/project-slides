@@ -155,6 +155,62 @@ Pro Frage (Beispiel Kprim-Aufgabe):
 | JSON-Schema    | Eigenes Schema v1.0 (siehe Abschnitt 4) | Kontrollierbar, erweiterbar                          |
 | XML-Export     | Eigener Konverter                       | Direkte Kontrolle über Moodle-XML-Format             |
 
+### 3.3 Workflow-Entscheid Phase 1
+
+Fuer Phase 1 wird **kein offenes agentisches System** vorgesehen, sondern eine klar steuerbare Python-Pipeline mit gezielten LLM-Aufrufen.
+
+**Begruendung:**
+
+- Die Seminararbeit verlangt vor allem Nachvollziehbarkeit, nicht maximale Autonomie
+- Fehler muessen klar einem Verarbeitungsschritt zuordenbar bleiben
+- Die Pipeline soll mit Ground Truth evaluiert werden koennen
+- Ein agentischer Workflow wuerde in Phase 1 die Komplexitaet erhoehen, ohne einen gesicherten methodischen Mehrwert zu liefern
+
+**Empfohlener Ablauf in Phase 1:**
+
+1. PDF laden
+2. OCR nur bei Bedarf aktivieren
+3. Text, Bilder und Strukturmerkmale extrahieren
+4. LLM gezielt fuer Fragetyp, Struktur, Titel, Tags und Feedback-Vorschlaege aufrufen
+5. Ergebnisse in JSON-Zwischenformat ueberfuehren
+6. JSON gegen Ground Truth und Review pruefen
+7. XML erzeugen und validieren
+
+**Rolle der KI in Phase 1:**
+
+- Das LLM ist ein aufgerufener Analysedienst
+- Die Steuerlogik bleibt in Python
+- Review- und Fallback-Entscheidungen sind explizit modelliert
+
+### 3.4 Python-Pipeline vs. agentischer Workflow
+
+| Kriterium                            | Python-Pipeline (Phase 1) | Agentischer Workflow |
+| ------------------------------------ | ------------------------- | -------------------- |
+| **Nachvollziehbarkeit**              | hoch                      | mittel               |
+| **Testbarkeit gegen Ground Truth**   | hoch                      | mittel               |
+| **Fehlerlokalisierung**              | klar moeglich             | schwieriger          |
+| **Implementierungskomplexitaet**     | kontrollierbar            | deutlich hoeher      |
+| **Eignung fuer Seminararbeit**       | sehr gut                  | nur bedingt          |
+| **Flexibilitaet bei Spezialfaellen** | mittel                    | hoch                 |
+| **Sinnvoller Einsatzzeitpunkt**      | sofort                    | eher Phase 2         |
+
+**Interpretation:**
+
+- Die Python-Pipeline ist fuer den Proof-of-Concept die robustere und argumentativ staerkere Loesung
+- Ein agentischer Ansatz ist erst sinnvoll, wenn das System selbststaendig zwischen mehreren Werkzeugen, Analysepfaden oder Fallbacks entscheiden soll
+- Falls spaeter eine Agentik eingefuehrt wird, sollte sie nicht offen-autonom sein, sondern als kontrollierte Orchestrierung mit klaren Entscheidungspunkten
+
+### 3.5 Option fuer Phase 2
+
+In Phase 2 kann eine erweiterte Workflow-Orchestrierung geprueft werden, falls mindestens einer der folgenden Faelle eintritt:
+
+- OCR soll dynamisch nur bei ungeeigneten PDFs zugeschaltet werden
+- Bilder, Tabellen und Formeln muessen ueber getrennte Analysepfade behandelt werden
+- Unsicherheit soll automatische Zweitpruefungen oder Fallback-Schritte ausloesen
+- Prompting und Review-Regeln sollen fachspezifisch variieren
+
+Auch in diesem Fall bleibt die Empfehlung, keine freie Agentik einzusetzen, sondern eine **regelbasierte Orchestrierung in Python** mit optionalen Frameworks wie LangChain oder DSPy als technische Hilfsmittel.
+
 ---
 
 ## 4. JSON-Zwischenformat (Schema v1.0)
@@ -320,26 +376,89 @@ Phase 2:              Automatische Prompt-Anpassung nach 5 PDFs; Fach-Tracking e
 
 ---
 
-## 9. Systemgrenzen Phase 1
+## 9. Evaluationsphasen und Systemgrenzen
 
-### 9.1 Test-Setup (3 Dimensionen)
+### 9.1 Phasenmodell
+
+Die Evaluation wird bewusst in zwei Phasen getrennt, um die Grundrobustheit der Pipeline von fachlich bedingter Spezialkomplexitaet zu trennen.
+
+| Phase       | Fokus                                   | Faecher                                | Ziel                                                                                            |
+| ----------- | --------------------------------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| **Phase 1** | Text- und strukturdominierte Pruefungen | Geschichte, Allgemeinbildung, Biologie | Baseline fuer PDF-Parsing, Struktur-Erkennung, Fragetyp-Klassifikation und XML-Export           |
+| **Phase 2** | Formel- und symbolintensive Pruefungen  | Mathematik, Physik, Chemie             | Belastungstest fuer Formeln, numerische Logik, Tabellen, Einheiten und fachspezifische Notation |
+
+**Uebergangskriterium:** Phase 2 wird erst gestartet, wenn Phase 1 stabile Ergebnisse liefert und die Grundpipeline nicht mehr auf offensichtlichen Strukturfehlern scheitert.
+
+### 9.2 Phase 1: Baseline-Evaluation
+
+**Ziel:** Nachweisen, dass das System bei ueberwiegend textbasierten und didaktisch klar strukturierten Pruefungen verlaesslich arbeitet.
+
+**Vorgeschlagene Testbasis:**
+
+- **Geschichte:** textlastig, eher lineare Aufgabenstruktur
+- **Allgemeinbildung:** textlastig, heterogene Fragetypen moeglich
+- **Biologie:** textlastig mit moeglichen Bildern oder einfachen Tabellen
+
+**Methodik:**
+
+- Jede Pruefung wird zuerst manuell in Moodle erfasst und als korrektes XML exportiert
+- PDF und XML bilden zusammen ein fachliches Referenzpaar
+- Die XML-Datei gilt als Ground Truth fuer Evaluation und Vergleich
+- Optional wird daraus zusaetzlich ein JSON-Zwischenformat erzeugt, um Fehlerquellen feingranular zu analysieren
+
+**Empfohlene Nutzung der Referenzpaare:**
+
+- 2 Pruefungen fuer Prompt- und Pipeline-Kalibrierung
+- 1 Pruefung fuer interne Zwischenbewertung
+- 1 Pruefung als unangetastetes Testset
+
+### 9.3 Phase 2: Erweiterung fuer formellastige Faecher
+
+**Ziel:** Pruefen, wie stark Qualitaet und Nachbearbeitungsaufwand sinken, sobald Formeln, numerische Berechnungen und komplexere Layouts hinzukommen.
+
+**Vorgeschlagene Testbasis:**
+
+- **Mathematik:** Formeln, numerische Antworten, berechnete Fragetypen
+- **Physik:** Einheiten, Gleichungen, Tabellen, Diagramme
+- **Chemie:** Formelschreibweise, Reaktionsgleichungen, ggf. spezialisierte Fragetypen
+
+**Erwartete Zusatzrisiken in Phase 2:**
+
+- Formel- und Symbolerkennung unzureichend
+- Numerische Toleranzen falsch interpretiert
+- Bilder, Diagramme oder Tabellen falsch zugeordnet
+- Fachnotation wird durch OCR oder LLM unzulaessig veraendert
+
+### 9.4 Test-Setup (3 Dimensionen)
 
 **Dokument-Stufen:**
 
 - **Stufe A** (Pflicht): Maschinell erstelltes PDF → Baseline
-- **Stufe B/E** (Pflicht): LaTeX-PDF mit Formeln ODER PDF mit Bildern/Diagrammen
+- **Stufe B** (Pflicht in Phase 2): PDF mit Formeln, Tabellen oder Einheiten
+- **Stufe E** (Pflicht in Phase 1 oder 2): PDF mit Bildern/Diagrammen
 - **Stufen C/D** (optional): Scans / Word-Chaos (nur wenn Zeit vorhanden)
 
 **Fragetypen:**
 
-- 🔴 Pflicht: `kprime`, `multichoice`, `truefalse`
-- 🟡 Optional: `match`, `shortanswer`, `numerical`
+- 🔴 Pflicht in Phase 1: `kprime`, `multichoice`, `truefalse`
+- 🟡 Optional in Phase 1: `match`, `shortanswer`
+- 🔴 Pflicht in Phase 2: `numerical`, `calculatedsimple`, formelnahe Varianten je nach Testmaterial
 
-**Inhaltskomplexität:** Einfach (nur Text) → Mittel (Text + Bild) → Komplex (Formeln)
+**Inhaltskomplexitaet:** Einfach (nur Text) → Mittel (Text + Bild/Tabelle) → Komplex (Formeln, Einheiten, Diagramme)
 
-**Minimalset:** 2 PDFs × 3 Fragetypen × 3 Fragen = ~18 dokumentierte Testfälle
+### 9.5 Erfolgskriterien pro Phase
 
-### 9.2 Bewusste Ausschlüsse
+| Phase       | Mindestziel                                                                                                                                |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Phase 1** | Struktur und Fragetypen muessen bei textdominierten Pruefungen reproduzierbar und mit vertretbarem Review-Aufwand erkannt werden           |
+| **Phase 2** | Das System muss zeigen, welche Bestandteile auch bei formellastigen Pruefungen tragfaehig bleiben und wo ein bewusster Fallback noetig ist |
+
+**Pragmatische Lesart:**
+
+- Phase 1 beantwortet die Frage: Funktioniert der Grundansatz?
+- Phase 2 beantwortet die Frage: Wo liegen die fachlichen Grenzen?
+
+### 9.6 Bewusste Ausschluesse
 
 | Ausschluss                          | Begründung                                   | Ziel-Phase                |
 | ----------------------------------- | -------------------------------------------- | ------------------------- |
@@ -351,7 +470,7 @@ Phase 2:              Automatische Prompt-Anpassung nach 5 PDFs; Fach-Tracking e
 
 ---
 
-## 10. Roadmap Phase 1
+## 10. Roadmap Phase 1 und 2
 
 ### 10.1 Deliverables Seminararbeit
 
@@ -372,20 +491,25 @@ Phase 2:              Automatische Prompt-Anpassung nach 5 PDFs; Fach-Tracking e
 
 ### 10.2 Konkrete nächste Schritte
 
-| Schritt                                                                     | Priorität  | Aufwand |
-| --------------------------------------------------------------------------- | ---------- | ------- |
-| 1. Testdaten vorbereiten: 2 PDFs (Stufe A + B/E) mit je 10 Fragen auswählen | 🔴 hoch    | 1–2h    |
-| 2. JSON-Schema v1.0 implementieren (Python-Dataclass oder Pydantic)         | 🔴 hoch    | 2–3h    |
-| 3. PDF-Parser aufsetzen (pymupdf), Text und Bilder extrahieren              | 🔴 hoch    | 3–4h    |
-| 4. Ersten LLM-Prompt für Fragetyp-Klassifikation schreiben und testen       | 🔴 hoch    | 2–3h    |
-| 5. Few-Shot-Beispiele für `kprime`, `multichoice`, `truefalse` definieren   | 🔴 hoch    | 2–3h    |
-| 6. JSON → Moodle-XML Konverter implementieren                               | 🟡 mittel  | 3–4h    |
-| 7. Erste Testläufe mit Minimalset (18 Fragen) durchführen                   | 🟡 mittel  | 2–3h    |
-| 8. Fehlerrate dokumentieren → Qualitätsmetriken befüllen                    | 🟡 mittel  | 1–2h    |
-| 9. AI-Workflow-Frameworks evaluieren (LangChain vs. DSPy vs. direkt)        | 🔵 niedrig | 2–3h    |
-| 10. Präsentation Block 2 vorbereiten                                        | 🔵 niedrig | 2–3h    |
+| Schritt                                                                               | Priorität  | Aufwand |
+| ------------------------------------------------------------------------------------- | ---------- | ------- |
+| 1. Vier textdominierte Pruefungen fuer Phase 1 auswaehlen und dokumentieren           | 🔴 hoch    | 1–2h    |
+| 2. Pro Phase-1-Pruefung PDF und manuell erzeugtes Moodle-XML als Referenzpaar ablegen | 🔴 hoch    | 3–5h    |
+| 3. Eine Pruefung als unangetastetes Testset reservieren                               | 🔴 hoch    | 0.5h    |
+| 4. JSON-Schema v1.0 implementieren (Python-Dataclass oder Pydantic)                   | 🔴 hoch    | 2–3h    |
+| 5. PDF-Parser aufsetzen (pymupdf), Text und Bilder extrahieren                        | 🔴 hoch    | 3–4h    |
+| 6. Ersten LLM-Prompt fuer Fragetyp-Klassifikation schreiben und testen                | 🔴 hoch    | 2–3h    |
+| 7. Few-Shot-Beispiele fuer `kprime`, `multichoice`, `truefalse` definieren            | 🔴 hoch    | 2–3h    |
+| 8. JSON → Moodle-XML Konverter implementieren                                         | 🟡 mittel  | 3–4h    |
+| 9. Erste Testlaeufe mit Phase-1-Referenzmaterial durchfuehren                         | 🟡 mittel  | 2–4h    |
+| 10. Fehlerrate dokumentieren und mit Ground Truth vergleichen                         | 🟡 mittel  | 1–2h    |
+| 11. Phase 2 vorbereiten: Mathematik, Physik und Chemie als Erweiterungsset definieren | 🟡 mittel  | 1–2h    |
+| 12. AI-Workflow-Frameworks evaluieren (LangChain vs. DSPy vs. direkt)                 | 🔵 niedrig | 2–3h    |
+| 13. Präsentation Block 2 vorbereiten                                                  | 🔵 niedrig | 2–3h    |
 
-**Gesamtaufwand Phase 1 (geschätzt):** ~20–30h
+**Gesamtaufwand Phase 1 (geschaetzt):** ~25–35h
+
+**Hinweis zu Phase 2:** Die eigentliche Erweiterung auf Mathematik, Physik und Chemie folgt erst nach stabiler Baseline aus Phase 1. Fuer die Seminararbeit ist es ausreichend, Phase 2 methodisch sauber vorzubereiten und mit ersten Testfaellen anzudenken.
 
 ---
 
