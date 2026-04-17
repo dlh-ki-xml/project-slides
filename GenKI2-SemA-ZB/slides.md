@@ -119,6 +119,29 @@ Note:
 Phase 2 ist kein Widerspruch zu Phase 1, sondern eine spätere Erweiterungsoption.
 Erst wenn der Basiskern stabil ist, lohnt sich mehr Orchestrierung.
 
+<!-- vertical -->
+
+### Toolchain Phase 1
+
+<div class="mermaid"><pre>
+flowchart LR
+  A[PDF Upload] --> B{Scan oder Bild PDF}
+  B -- Ja --> C[OCR mit Tesseract und pytesseract]
+  B -- Nein --> D[Parsing mit PyMuPDF]
+  C --> D
+  D --> E[LLM Analyse mit GPT 4o oder Claude]
+  E --> F[JSON Validierung mit Pydantic]
+  F --> G[Vorschau mit Streamlit]
+  G -- OK --> I[XML Export mit lxml]
+  G -- Anpassen --> H[Manuelle Korrektur]
+  H --> F
+  I --> J[(Moodle XML)]
+</pre></div>
+
+Note:
+Diese Folie zeigt den konkreten Default-Stack fuer Phase 1.
+Wichtig ist die Trennung zwischen automatischer Analyse, JSON-Kontrolle und kontrollierter manueller Korrektur.
+
 ---
 
 ## <i class="fas fa-vial" aria-hidden="true"></i> Evaluationsphasen

@@ -1,9 +1,16 @@
+const isPdfExport = new URLSearchParams(window.location.search).has(
+  "print-pdf",
+);
+const showPdfNotes = new URLSearchParams(window.location.search).has("notes");
+
 Reveal.initialize({
   controls: true,
   progress: true,
   center: true,
   hash: true,
   transition: "convex",
+  showNotes: isPdfExport && showPdfNotes ? "separate-page" : false,
+  pdfSeparateFragments: false,
 
   animate: {
     autoplay: true,

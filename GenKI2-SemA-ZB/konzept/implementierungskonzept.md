@@ -155,6 +155,19 @@ Pro Frage (Beispiel Kprim-Aufgabe):
 | JSON-Schema    | Eigenes Schema v1.0 (siehe Abschnitt 4) | Kontrollierbar, erweiterbar                          |
 | XML-Export     | Eigener Konverter                       | Direkte Kontrolle über Moodle-XML-Format             |
 
+### 3.2.1 Konkrete Tool-Empfehlungen fuer den Workflow
+
+Die Architekturentscheidung fuer Phase 1 wird durch einen bewusst schlanken Default-Stack konkretisiert:
+
+- OCR mit Tesseract plus pytesseract
+- Parsing mit PyMuPDF
+- gezielte LLM-Aufrufe auf GPT-4o oder Claude
+- JSON-Validierung mit Pydantic
+- Vorschau und manuelle Korrektur mit Streamlit
+- XML-Erzeugung mit lxml
+
+Die ausfuehrliche Herleitung inklusive Toolchain-Diagramm ist im Zusatzdokument [tool-empfehlungen-workflow.md](tool-empfehlungen-workflow.md) festgehalten. Dieses Dokument dient als operative Ergaenzung zum Implementierungskonzept und kann direkt fuer das technische Prototyping verwendet werden.
+
 ### 3.3 Workflow-Entscheid Phase 1
 
 Fuer Phase 1 wird **kein offenes agentisches System** vorgesehen, sondern eine klar steuerbare Python-Pipeline mit gezielten LLM-Aufrufen.
