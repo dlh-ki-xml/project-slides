@@ -8,8 +8,9 @@ Dieses Dokument fasst die wichtigsten anstehenden Architektur- und Prozessentsch
 
 **Kontext:**
 
-- Phase 1 soll methodisch sauber, nachvollziehbar und evaluierbar sein
-- Die Seminararbeit profitiert mehr von klarer Steuerlogik als von maximaler Autonomie
+- Der erste Projektstand soll schnell umsetzbar, stabil und fuer das ganze Team nachvollziehbar sein
+- Fehler muessen klar lokalisierbar bleiben, damit Parsing, Review und Export gezielt verbessert werden koennen
+- Fuer den Einstieg ist kontrollierbare Steuerlogik wertvoller als maximale Autonomie
 
 **Empfehlung:**
 
@@ -23,7 +24,8 @@ Dieses Dokument fasst die wichtigsten anstehenden Architektur- und Prozessentsch
 **Kontext:**
 
 - Die KI soll Struktur erkennen, Fragetypen klassifizieren und Vorschlaege machen
-- Die Hauptlogik fuer Parsing, Fallback und Export muss kontrollierbar bleiben
+- Die Hauptlogik fuer Parsing, Fallback, Review und Export muss im Projekt klar kontrollierbar bleiben
+- Das Team braucht ein System, das auch ohne Black-Box-Verhalten gewartet und erweitert werden kann
 
 **Empfehlung:**
 
@@ -38,6 +40,7 @@ Dieses Dokument fasst die wichtigsten anstehenden Architektur- und Prozessentsch
 
 - PDF allein reicht nicht als Referenz
 - Manuell erzeugtes Moodle-XML liefert ein belastbares Soll-Ergebnis
+- Fuer Projektentscheidungen braucht das Team messbare Qualitaet statt rein subjektive Einschaetzungen
 
 **Empfehlung:**
 
@@ -53,6 +56,7 @@ Dieses Dokument fasst die wichtigsten anstehenden Architektur- und Prozessentsch
 
 - Textlastige und formellastige Faecher stellen unterschiedliche Anforderungen
 - Ohne Phasentrennung ist unklar, ob Fehler aus der Grundpipeline oder aus Fachkomplexitaet stammen
+- Das Projekt braucht zuerst eine stabile Basis, bevor komplexere Spezialfaelle dazukommen
 
 **Empfehlung:**
 
@@ -66,6 +70,7 @@ Dieses Dokument fasst die wichtigsten anstehenden Architektur- und Prozessentsch
 **Kontext:**
 
 - Phase 2 ist nur sinnvoll, wenn Baseline-Probleme bereits beherrscht werden
+- Das Team sollte Erweiterungen erst dann angehen, wenn der Kernprozess reproduzierbar funktioniert
 
 **Empfehlung:**
 
@@ -79,6 +84,8 @@ Dieses Dokument fasst die wichtigsten anstehenden Architektur- und Prozessentsch
 **Kontext:**
 
 - Ziel ist ein belastbarer Proof-of-Concept, keine produktionsreife Gesamtloesung
+- Das Projekt braucht einen Kern, der echten Nutzen zeigt, ohne sich in Nebenbaustellen zu verlieren
+- Alles, was Wartung und Implementierung stark verteuert, sollte bewusst spaeter kommen
 
 **Empfehlung:**
 
@@ -92,6 +99,8 @@ Dieses Dokument fasst die wichtigsten anstehenden Architektur- und Prozessentsch
 **Kontext:**
 
 - Drag-and-drop, Drawing, Molekuel- oder bildbezogene Typen sind deutlich fehleranfaelliger
+- Nicht alle Fragetypen liefern fuer den gleichen Aufwand den gleichen Projektnutzen
+- Das Team sollte zuerst die robusten und haeufigen Typen abdecken
 
 **Empfehlung:**
 
@@ -105,6 +114,7 @@ Dieses Dokument fasst die wichtigsten anstehenden Architektur- und Prozessentsch
 **Kontext:**
 
 - Ohne messbare Kriterien bleibt die Bewertung zu subjektiv
+- Fuer Priorisierung, Weiterentwicklung und Teamentscheidungen braucht es klare Qualitaetsindikatoren
 
 **Empfehlung:**
 
@@ -120,6 +130,6 @@ Die zentrale Teamfrage lautet nicht nur: Welche Technik nehmen wir?
 
 Sondern:
 
-- Welche Loesung ist fuer die Seminararbeit am besten begruendbar?
-- Welche Komplexitaet koennen wir methodisch sauber vertreten?
+- Welche Loesung bringt dem Projekt frueh einen stabilen und sichtbaren Nutzen?
+- Welche Komplexitaet koennen wir im Team realistisch umsetzen und betreiben?
 - Welche Komponenten muessen wirklich umgesetzt werden und welche reichen als Phase-2-Option?
