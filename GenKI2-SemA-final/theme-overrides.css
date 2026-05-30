@@ -1,0 +1,108 @@
+.reveal .slides {
+  text-align: left;
+}
+
+.title-slide {
+  text-align: center;
+}
+
+.title-slide .title-logo {
+  height: 88px;
+  margin: 0 auto 1.6rem auto;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.title-slide .ffhs-logo {
+  height: 70px;
+  margin: 1.4rem auto 0 auto;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.title-slide h2 {
+  margin-bottom: 0.3rem;
+}
+
+.title-slide h5 {
+  margin-bottom: 1rem;
+}
+
+.title-slide .title-subline {
+  max-width: 70%;
+  margin: 1rem auto 0 auto;
+  font-size: 0.72em;
+}
+
+.metric-row,
+.two-col {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.metric-row {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.two-col {
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.metric,
+.panel,
+.quote-box {
+  padding: 0.8rem 0.9rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+}
+
+.metric .value {
+  display: block;
+  font-weight: 700;
+}
+
+.metric .label,
+.tiny,
+.muted {
+  font-size: 0.58em;
+  opacity: 0.8;
+}
+
+.panel h3,
+.panel h4 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+.appendix-tag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.55em;
+  margin-bottom: 0.4rem;
+}
+
+.reveal pre {
+  border-radius: 8px;
+}
+
+.reveal table {
+  font-size: 0.65em;
+  width: 100%;
+}
+
+.reveal table th,
+.reveal table td {
+  padding: 0.4rem 0.3rem;
+}
+
+.reveal blockquote {
+  width: 100%;
+  margin: 0;
+  padding: 0.7rem 0.9rem;
+  border-left: 4px solid currentColor;
+  box-shadow: none;
+}

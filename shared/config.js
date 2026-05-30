@@ -3,6 +3,8 @@ const isPdfExport = new URLSearchParams(window.location.search).has(
 );
 const showPdfNotes = new URLSearchParams(window.location.search).has("notes");
 
+const revealOverrides = window.revealConfig || {};
+
 Reveal.initialize({
   controls: true,
   progress: true,
@@ -66,4 +68,5 @@ Reveal.initialize({
   mermaid: {
     startOnLoad: true,
   },
+  ...revealOverrides,
 });
