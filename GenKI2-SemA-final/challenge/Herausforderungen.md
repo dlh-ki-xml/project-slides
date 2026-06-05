@@ -23,6 +23,11 @@ Die Quelldateien sind fachlich nicht neutral strukturiert. Für eine zuverlässi
 - Für einzelne Fälle braucht es eher eine Rückfrage- oder Review-Logik als eine harte Vollautomatik, damit die didaktisch passende Moodle-Repräsentation gewählt wird.
 - Genau deshalb ist ein kontrollierter Transformationsprozess mit Zwischenformat, Quality Gate und dokumentierten Prüfpunkten robuster als ein einmaliger Direkt-Export.
 
+## Praxis bei Lehrpersonen
+
+- Neben den dokumentzentrierten Problemklassen gibt es eine zweite Hürde: Lehrpersonen müssen Resultate unter Zeitdruck prüfen, Vertrauen in die Vorschläge aufbauen und den letzten Handoff nach Moodle bewältigen.
+- Diese Perspektive ist für den realen ROI entscheidend und wird separat in `lehrpersonen-roi-und-vertrauen.md` verdichtet.
+
 ## Fazit
 
 Die zentrale Herausforderung besteht nicht nur im Extrahieren von Text, sondern im korrekten Interpretieren von Kontext, Layout, Lösungslogik und didaktischer Absicht. Die Qualität des Outputs hängt deshalb wesentlich davon ab, ob Unsicherheiten sichtbar gemacht und im Zweifelsfall gezielt überprüft werden.

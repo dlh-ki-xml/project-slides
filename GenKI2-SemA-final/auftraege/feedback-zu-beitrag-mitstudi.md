@@ -1,0 +1,5 @@
+Lieber Alain
+
+die von dir beschriebenen Produktivitäts-Boosts im Bereich UI/UX-Prototyping klingen sehr eindrücklich. Ich selbst komme nicht aus der Softwareentwicklung, kann mir aber gut vorstellen, dass genau diese schnelle Visualisierung die Abstimmung zwischen Kundschaft, UI-Spezialist:innen und Programmierer:innen stark erleichtert. Besonders spannend finde ich deinen Gedanken, dass man schon sehr früh ein Gefühl für das fertige Produkt bekommt und Missverständnisse dadurch schneller sichtbar werden.
+
+Ich frage mich dabei, ob die Resultate auch davon abhängen, wer die Prompts formuliert. Vielleicht kommt eine UI-Spezialistin in einer Sitzung schneller zu einem überzeugenden ersten Entwurf als ein:e Programmierer:in, weil sie visuelle Wirkung und Nutzerführung anders mitdenkt. Vielleicht täusche ich mich auch, aber genau dieser Punkt zeigt für mich, dass KI die Zusammenarbeit nicht ersetzt, sondern eher verstärkt. In jedem Fall scheint mir der grosse Vorteil darin zu liegen, dass man viel schneller sieht, in welche Richtung die Reise geht. Das ist für alle Beteiligten sehr hilfreich.

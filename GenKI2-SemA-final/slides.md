@@ -26,8 +26,8 @@
 
 Note:
 Zeitbudget etwa 40 Sekunden.
-Ich öffne mit Nutzen, Lösung und Reproduzierbarkeit.
-Die Anhänge danach sind bewusst detaillierter und dienen als Doku, damit der Stand später nachvollzogen und reproduziert werden kann.
+Ich öffne mit dem Nutzen: weniger manuelle Moodle-Erfassung, aber weiterhin prüfbar und reproduzierbar.
+Die Anhänge sind danach die technische Doku, nicht Teil des Pflichtvortrags.
 
 ---
 
@@ -39,9 +39,9 @@ Die Anhänge danach sind bewusst detaillierter und dienen als Doku, damit der St
 4. Ausblick: Kombination mit dem AI-Workflow von mmaritini
 
 Note:
-Zeitbudget etwa 25 Sekunden.
-Die Hauptpräsentation ist bewusst kurz gehalten.
-Alles Technische, das für die spätere Wiederholbarkeit wichtig ist, folgt danach im Anhang.
+Zeitbudget etwa 20 Sekunden.
+Ich führe in vier Schritten vom Problem zur Lösung, dann zur Evidenz und zum Ausblick.
+Alles Detailmaterial liegt im Anhang.
 
 ---
 
@@ -67,7 +67,7 @@ Alles Technische, das für die spätere Wiederholbarkeit wichtig ist, folgt dana
     <h3>Gewählter Optimierungsprozess</h3>
     <ul>
       <li>Aus einer bestehenden Prüfung ein importierbares Moodle-XML erzeugen</li>
-      <li>Fehlerquellen reduzieren: Fragetyp, Punkte, Segmentierung, Kontext</li>
+      <li>Fehlerquellen reduzieren: Fragetyp, Punkte und Segmentierung</li>
       <li>Artefakte so ablegen, dass jeder Lauf nachprüfbar bleibt</li>
     </ul>
   </div>
@@ -78,7 +78,7 @@ Alles Technische, das für die spätere Wiederholbarkeit wichtig ist, folgt dana
 </div>
 
 Note:
-Zeitbudget etwa 55 Sekunden.
+Zeitbudget etwa 50 Sekunden.
 Der Unternehmensbezug ist der digitale Prüfungsprozess.
 Optimiert wird nicht das Schreiben der Prüfung, sondern der Transfer in Moodle inklusive Qualitätskontrolle.
 
@@ -89,7 +89,7 @@ Optimiert wird nicht das Schreiben der Prüfung, sondern der Transfer in Moodle 
 <div class="mermaid"><pre>
 flowchart LR
   A[Input<br/>PDF oder DOCX] --> B[extract<br/>Rohtext und Metadaten]
-  B --> C[normalize<br/>Fragen als JSON]
+  B --> C[normalize<br/>LLM stuetzt Struktur und Fragetyp]
   C --> D[validate<br/>Schema plus Quality Gate]
   D --> E[export<br/>Moodle XML]
   E --> F[report<br/>Summary und Artefakte]
@@ -100,8 +100,8 @@ flowchart LR
     <h3>Technische Basis</h3>
     <ul>
       <li>lokale Python-Pipeline mit festen Stages</li>
+      <li>GenAI fuer Struktur, Fragetyp und Review-Vorschlaege</li>
       <li>Pydantic-Validierung und Quality Gate</li>
-      <li>Run-Ordner mit vollständiger Nachvollziehbarkeit</li>
     </ul>
   </div>
   <div class="panel">
@@ -116,8 +116,8 @@ flowchart LR
 
 Note:
 Zeitbudget etwa 70 Sekunden.
-Entscheidend ist: Die Pipeline ist nicht nur eine Idee, sondern lokal ausführbar.
-Jede Stufe schreibt ein Artefakt, das man separat prüfen kann.
+Kernaussage: Die Pipeline ist lokal ausführbar und jede Stufe schreibt ein prüfbares Artefakt.
+Ich nenne nur die Stages, nicht die Detailimplementierung.
 
 ---
 
@@ -135,15 +135,15 @@ Jede Stufe schreibt ein Artefakt, das man separat prüfen kann.
     <ul>
       <li>blocked stoppt Export hart</li>
       <li>needs review markiert echte Unsicherheit</li>
-      <li>ready bedeutet: aktuell ohne Review-Hinweis exportierbar</li>
+      <li>ready bedeutet: ohne Review-Hinweis exportierbar</li>
     </ul>
   </div>
   <div class="panel">
-    <h3>ROI-Skizze</h3>
+    <h3>ROI bei Lehrpersonen</h3>
     <ul>
       <li>manuell: ca. 60 Minuten für 10 Fragen</li>
       <li>Zielbild: ca. 15 Minuten mit Review statt Neuerfassung</li>
-      <li>Einsparungspotenzial: ca. 45 Minuten pro 10 Fragen</li>
+      <li>Nutzen entsteht nur, wenn Fehler sichtbar und schnell prüfbar bleiben</li>
     </ul>
   </div>
 </div>
@@ -151,7 +151,7 @@ Jede Stufe schreibt ein Artefakt, das man separat prüfen kann.
 Note:
 Zeitbudget etwa 70 Sekunden.
 Die drei Runs sind der belastbare Beleg.
-Die ROI-Zahl ist weiterhin eine Skizze, aber sie ist jetzt an einem lauffähigen Prozess aufgehängt und nicht mehr nur theoretisch.
+ROI heisst hier nicht nur Zeitersparnis, sondern weniger Neuerfassung bei sichtbaren Fehlern.
 
 ---
 
@@ -159,7 +159,7 @@ Die ROI-Zahl ist weiterhin eine Skizze, aber sie ist jetzt an einem lauffähigen
 
 <div class="two-col">
   <div class="panel">
-    <h3>Reproduzierbare Ausführung</h3>
+    <h3>Kurzbeleg Reproduktion</h3>
     <pre><code class="language-bash">cd project-docs/project/python-skripte
 source ../../.venv/bin/activate
 python -m pdf_to_moodle.main \
@@ -168,7 +168,7 @@ python -m pdf_to_moodle.main \
   --stage all</code></pre>
   </div>
   <div class="panel">
-    <h3>Dokumentierte Prüfpunkte</h3>
+    <h3>Prüfpunkte</h3>
     <ul>
       <li>`01_extract/raw_text.txt` prüfen</li>
       <li>`02_normalize/normalized.json` vergleichen</li>
@@ -179,13 +179,13 @@ python -m pdf_to_moodle.main \
 </div>
 
 <blockquote>
-Der Foliensatz zeigt nicht nur Resultate, sondern den Weg dorthin so, dass ein weiterer Lauf später mit denselben Schritten wiederholbar ist.
+Der Foliensatz ist Ergebnisdarstellung und reproduzierbare technische Doku zugleich.
 </blockquote>
 
 Note:
-Zeitbudget etwa 65 Sekunden.
-Das ist hier der Unterschied zu einer reinen Management-Präsentation.
-Der Foliensatz enthält absichtlich genügend technische Information, damit der Projektstand reproduzierbar bleibt.
+Zeitbudget etwa 60 Sekunden.
+Ich zeige nur einen Beispielaufruf und die wichtigsten Prüfpunkte.
+Der vollständige Reproduktionsablauf steht im Anhang.
 
 ---
 
@@ -224,30 +224,28 @@ Die starke Kombination ist: technische Reproduzierbarkeit von thomtomi plus fach
 
 ## Fazit
 
-- Der Prozess wurde nicht nur beschrieben, sondern als lokal ausführbare Pipeline umgesetzt.
-- Die Qualitätsstufe der Geschichtsprüfung wurde für die Grammatik-Aufgabenfassung auf DOCX und PDF erreicht.
-- Die Präsentation ist gleichzeitig Ergebnisdarstellung und technische Doku.
-- Der nächste sinnvolle Schritt ist die kontrollierte Zusammenführung mit dem AI-Workflow von mmaritini.
+- Prozess als lokal ausführbare Pipeline umgesetzt
+- Qualitätsstufe `ready` für Geschichtsprüfung sowie Grammatik AUF in DOCX und PDF erreicht
+- Foliensatz dokumentiert Ergebnis, Reproduktion und Ausbaupfad
+- Nächster Schritt: kontrollierte Zusammenführung mit dem AI-Workflow von mmaritini
 
 <p class="lead">Danach folgt der Anhang mit Reproduktionsschritten, Architekturdetails und den belegten Run-Artefakten.</p>
 
 Note:
-Zeitbudget etwa 35 Sekunden.
-Wenn nur wenig Zeit bleibt, ist das die Kernaussage.
-Die Anhänge danach sind für Nachvollziehbarkeit, Fragen und spätere Weiterarbeit gedacht.
+Zeitbudget etwa 30 Sekunden.
+Ich schliesse mit den vier Kernaussagen und verweise nur kurz auf den Anhang.
 
 ---
 
 ## Übergang in den Anhang
 
-- Hauptteil endet hier nach rund 6 bis 7 Minuten.
+- Hauptteil endet hier nach rund 6:50 Minuten.
 - Die restlichen Folien dienen als technische Doku und als Backup für Fragen.
 - Relevanz: Projektstand, Reproduktion und Ausbaupfad bleiben im selben Artefakt dokumentiert.
 
 Note:
-Zeitbudget etwa 15 Sekunden.
-Diese Folie markiert bewusst den Übergang.
-Wenn die Zeit vorbei ist, kann ich hier sauber stoppen und bei Fragen in den Anhang springen.
+Zeitbudget etwa 10 Sekunden.
+Hier stoppe ich den Pflichtteil und nutze den Anhang nur bei Fragen.
 
 ---
 

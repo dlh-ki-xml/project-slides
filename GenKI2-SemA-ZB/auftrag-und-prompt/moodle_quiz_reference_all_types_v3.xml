@@ -467,4 +467,116 @@ Darüber hinaus können Individuen ein [genetisches Mosaik] bilden, bei dem Zell
     </bgimage>
   </question>
 
+  <!--
+    ZUORDNUNGSLISTE FUER KI-GENERIERUNG: CORE VS. ZUSATZ-PLUGINS
+
+    Entscheidend fuer Moodle-XML ist der Wert im question/@type.
+    Die qtype-Komponente hilft bei der Zuordnung zu Plugin und Code.
+
+    MOODLE-CORE-FRAGETYPEN
+
+    - Multiple-Choice
+      XML-Fragetyp: multichoice
+      Komponente: qtype_multichoice
+
+    - Wahr/Falsch
+      XML-Fragetyp: truefalse
+      Komponente: qtype_truefalse
+
+    - Zuordnung
+      XML-Fragetyp: match
+      Komponente: qtype_match
+
+    - Kurzantwort
+      XML-Fragetyp: shortanswer
+      Komponente: qtype_shortanswer
+
+    - Numerisch
+      XML-Fragetyp: numerical
+      Komponente: qtype_numerical
+
+    - Freitext (Essay)
+      XML-Fragetyp: essay
+      Komponente: qtype_essay
+
+    - Berechnet (Calculated)
+      XML-Fragetyp: calculated
+      Komponente: qtype_calculated
+
+    - Einfach berechnet (Calculated simple)
+      XML-Fragetyp: calculatedsimple
+      Komponente: qtype_calculatedsimple
+
+    - Berechnete Multiple-Choice (Calculated multichoice)
+      XML-Fragetyp: calculatedmulti
+      Komponente: qtype_calculatedmulti
+
+    - Lueckentext (Cloze)
+      XML-Fragetyp: cloze
+      Komponente: qtype_cloze
+
+    - Lueckentextauswahl (Gapselect)
+      XML-Fragetyp: gapselect
+      Komponente: qtype_gapselect
+
+    - Drag&drop auf ein Bild
+      XML-Fragetyp: ddimageortext
+      Komponente: qtype_ddimageortext
+
+    - Drag&drop auf Text
+      XML-Fragetyp: ddwtos
+      Komponente: qtype_ddwtos
+
+    - Zufaellige Kurzantwortzuordnung (Random short-answer matching)
+      XML-Fragetyp: randomsamatch
+      Komponente: qtype_randomsamatch
+
+    - Beschreibung
+      XML-Fragetyp: description
+      Komponente: qtype_description
+
+    ZUSAETZLICHE MOODLE-PLUGINS
+
+    - Erweiterter Lueckentext (Gapfill)
+      XML-Fragetyp: gapfill
+      Komponente: qtype_gapfill
+      Plugin: https://moodle.org/plugins/qtype_gapfill
+
+    - Freihandzeichnen (ETH)
+      XML-Fragetyp: drawing
+      Komponente: qtype_drawing
+      Plugin: https://moodle.org/plugins/qtype_drawing
+
+    - Kprim (ETH)
+      XML-Fragetyp: kprime
+      Komponente: qtype_kprime
+      Plugin: https://moodle.org/plugins/qtype_kprime
+
+    - MTF (ETH)
+      XML-Fragetyp: mtf
+      Komponente: qtype_mtf
+      Plugin: https://moodle.org/plugins/qtype_mtf
+
+    - Molsimilarity
+      XML-Fragetyp: molsimilarity
+      Komponente: qtype_molsimilarity
+      Plugin: https://moodle.org/plugins/qtype_molsimilarity
+
+    - Woerter markieren (Wordselect / Word selection)
+      XML-Fragetyp: wordselect
+      Komponente: qtype_wordselect
+      Plugin: https://moodle.org/plugins/qtype_wordselect
+
+    - Anordnung (Ordering), falls in der Instanz als Plugin installiert
+      XML-Fragetyp: ordering
+      Komponente: qtype_ordering
+      Plugin: https://moodle.org/plugins/qtype_ordering
+
+    MINI-CHECK FUER ORDERING
+
+    - In Standard-Moodle ist Anordnung meist ein Plugin.
+    - Fuer eine sichere Zuordnung in der Zielinstanz: Frage hinzufuegen -> Anordnung
+      und dann in URL oder Plugin-Uebersicht auf qtype_ordering pruefen.
+  -->
+
 </quiz>
