@@ -33,15 +33,47 @@ Die Anhänge sind danach die technische Doku, nicht Teil des Pflichtvortrags.
 
 ## Agenda
 
-1. Problem und Ziel im gewählten Prozess
+1. CAS-Auftrag und gewählter Prozess
 2. Umgesetzte Lösung und aktueller Stand
-3. Evidenz und Reproduzierbarkeit
+3. Evidenz, Demo-Pfad und ROI
 4. Ausblick: Kombination mit dem AI-Workflow von mmaritini
 
 Note:
 Zeitbudget etwa 20 Sekunden.
 Ich führe in vier Schritten vom Problem zur Lösung, dann zur Evidenz und zum Ausblick.
 Alles Detailmaterial liegt im Anhang.
+
+---
+
+## Zwei Ziele, ein Projektstand
+
+<div class="two-col">
+  <div class="panel">
+    <h3>Projektziel aus dem Konzept</h3>
+    <ul>
+      <li>bestehende PDF- oder DOCX-Prüfungen in Moodle-XML überführen</li>
+      <li>neutrales JSON-Zwischenformat als prüfbarer Stabilitätsanker</li>
+      <li>Quality Gate und Human-in-the-Loop statt ungeprüfter Vollautomatisierung</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3>Ziel der Abschlusspräsentation</h3>
+    <ul>
+      <li>Unternehmensprozess, Schwachstellen und Optimierung zeigen</li>
+      <li>GenKI-Einsatz mit Tools, Prompts und Beispielausführung belegen</li>
+      <li>IST/SOLL, ROI, Grenzen und nächsten Ausbauschritt verdichten</li>
+    </ul>
+  </div>
+</div>
+
+<blockquote>
+Der heutige Stand ist kein Produktivsystem, sondern ein belastbarer Proof-of-Concept für einen kontrollierten Transformationsprozess.
+</blockquote>
+
+Note:
+Zeitbudget etwa 50 Sekunden.
+Hier verbinde ich die ursprüngliche Konzeptarbeit mit dem finalen CAS-Auftrag.
+Wichtig ist die Unterscheidung: Langfristig geht es um ein lehrpersonentaugliches System; heute zeige ich den nachweisbaren Projektstand.
 
 ---
 
@@ -125,7 +157,7 @@ Ich nenne nur die Stages, nicht die Detailimplementierung.
 
 | Case                | Dateityp | Ergebnis | Aussage                                                    |
 | ------------------- | -------- | -------- | ---------------------------------------------------------- |
-| Geschichtsprüfung 1 | DOCX     | ready    | Referenzfall für Ground Truth                              |
+| Geschichtsprüfung 1 | DOCX     | ready    | Phase-1-Eval mit 8 Cases erreicht `total_score = 1.0000`   |
 | Grammatik AUF       | DOCX     | ready    | Aufgabenfassung sauber als Prompt modelliert               |
 | Grammatik AUF       | PDF      | ready    | PDF-Rauschen kontrolliert, gleiche Qualitätsstufe erreicht |
 
@@ -155,21 +187,65 @@ ROI heisst hier nicht nur Zeitersparnis, sondern weniger Neuerfassung bei sichtb
 
 ---
 
-## Warum ist der Foliensatz Teil der Doku?
+## Aktuelle Genauigkeit im Eval-Set
+
+<div class="metric-row">
+  <div class="metric">
+    <span class="value">1.0000</span>
+    <span class="label">Total Score auf 8 History-Phase-1-Cases</span>
+  </div>
+  <div class="metric">
+    <span class="value">8/8</span>
+    <span class="label">Cases vollständig gegen Ground Truth erfüllt</span>
+  </div>
+  <div class="metric">
+    <span class="value">ready</span>
+    <span class="label">Quality Gate, Moodle-XML vorhanden</span>
+  </div>
+</div>
+
+<div class="two-col" style="margin-top: 0.8rem;">
+  <div class="panel">
+    <h3>Was gemessen wurde</h3>
+    <ul>
+      <li>Fragetyp: 100%</li>
+      <li>Fragengrenzen: 100%</li>
+      <li>Metadaten wie Punkte und Antwortfeld-Zeilen: 100%</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3>Gültigkeit</h3>
+    <ul>
+      <li>Scope: Geschichtsprüfung 1, textdominierte Phase 1</li>
+      <li>Basis: `accuracy-summary.md` aus dem Python-Workflow</li>
+      <li>Nächste Messung: breiter gegen `history-p17` und weitere Fächer</li>
+    </ul>
+  </div>
+</div>
+
+Note:
+Zeitbudget etwa 60 Sekunden.
+Ich betone den Scope: Das ist ein starkes Ergebnis im definierten Eval-Set, keine Aussage über alle Prüfungen.
+Die Zahl stammt aus dem neu erzeugten Accuracy-Summary-Artefakt und ist damit reproduzierbar.
+
+---
+
+## Demo-Pfad: Tools und Prompts
 
 <div class="two-col">
   <div class="panel">
-    <h3>Kurzbeleg Reproduktion</h3>
+    <h3>Tool-Ausführung</h3>
     <pre><code class="language-bash">cd project-docs/project/python-skripte
-source ../../.venv/bin/activate
+source .venv/bin/activate
 python -m pdf_to_moodle.main \
   --exam-id deutsch-auf-p17-pdf-2026w22 \
   --input data/input_pdfs/AUF-Grammatikpruefung-Syntax-Interpunktion.pdf \
   --stage all</code></pre>
   </div>
   <div class="panel">
-    <h3>Prüfpunkte</h3>
+    <h3>Prompt- und Prüfpunkte</h3>
     <ul>
+      <li>LLM-Prompt modelliert Struktur, Fragetyp, Aufgabenfassung und Review-Hinweise</li>
       <li>`01_extract/raw_text.txt` prüfen</li>
       <li>`02_normalize/normalized.json` vergleichen</li>
       <li>`03_validate/validation_report.json` bewerten</li>
@@ -179,13 +255,56 @@ python -m pdf_to_moodle.main \
 </div>
 
 <blockquote>
-Der Foliensatz ist Ergebnisdarstellung und reproduzierbare technische Doku zugleich.
+Die Demo ist bewusst dateibasiert: Jeder Prompt- und Tool-Schritt erzeugt ein prüfbares Artefakt.
 </blockquote>
 
 Note:
+Zeitbudget etwa 70 Sekunden.
+Diese Folie erfüllt den CAS-Punkt zu Tools und Prompts.
+Ich zeige nicht den ganzen Prompt, sondern die Rolle des Prompts im Ablauf und die Dateien, an denen die Ausführung überprüft werden kann.
+
+---
+
+## Zweite Prüfung: Generalisierung
+
+<div class="metric-row">
+  <div class="metric">
+    <span class="value">24/24</span>
+    <span class="label">Nicht-Kategorie-Fragen wie Ground Truth</span>
+  </div>
+  <div class="metric">
+    <span class="value">3/20/1</span>
+    <span class="label">description / essay / shortanswer entspricht Referenz</span>
+  </div>
+  <div class="metric">
+    <span class="value">55 vs. 52</span>
+    <span class="label">Punktesumme bleibt als fachliches Delta sichtbar</span>
+  </div>
+</div>
+
+<div class="two-col" style="margin-top: 0.8rem;">
+  <div class="panel">
+    <h3>Verbessert in `history-p18`</h3>
+    <ul>
+      <li>Judenpass-Einleitung als `description` erhalten</li>
+      <li>BRD/DDR-Folgefrage separat exportiert</li>
+      <li>„mindestens 2 Punkte“ bleibt im Fragetext erhalten</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3>Interpretation</h3>
+    <ul>
+      <li>Strukturabdeckung passt jetzt zur Ground Truth</li>
+      <li>Typverteilung passt zur Ground Truth</li>
+      <li>Punktedelta stammt aus Rohtext `/6` vs. Moodle-Referenz `3.0`</li>
+    </ul>
+  </div>
+</div>
+
+Note:
 Zeitbudget etwa 60 Sekunden.
-Ich zeige nur einen Beispielaufruf und die wichtigsten Prüfpunkte.
-Der vollständige Reproduktionsablauf steht im Anhang.
+Diese Folie zeigt die zweite Prüfung als Generalisierungstest.
+Die Botschaft ist: Die Pipeline verbessert nicht nur das Trainings-/Eval-Set, sondern auch eine weitere reale Prüfung; die verbleibende Differenz ist fachlich sichtbar und nicht verdeckt.
 
 ---
 
@@ -224,10 +343,10 @@ Die starke Kombination ist: technische Reproduzierbarkeit von thomtomi plus fach
 
 ## Fazit
 
-- Prozess als lokal ausführbare Pipeline umgesetzt
+- Unternehmensprozess mit klarer Schwachstelle identifiziert: manuelle Moodle-Erfassung
+- GenKI-Optimierung als lokal ausführbare Pipeline mit Prompt-, Validierungs- und Exportstufen umgesetzt
 - Qualitätsstufe `ready` für Geschichtsprüfung sowie Grammatik AUF in DOCX und PDF erreicht
-- Foliensatz dokumentiert Ergebnis, Reproduktion und Ausbaupfad
-- Nächster Schritt: kontrollierte Zusammenführung mit dem AI-Workflow von mmaritini
+- Nächster Schritt: Prompt-Dokumentation konsolidieren und AI-Workflow-Logik kontrolliert integrieren
 
 <p class="lead">Danach folgt der Anhang mit Reproduktionsschritten, Architekturdetails und den belegten Run-Artefakten.</p>
 
@@ -287,7 +406,7 @@ Diese Folie beantwortet die Frage, wo jemand im Repo einsteigen muss, um das Pro
 
 ```bash
 cd project-docs/project/python-skripte
-source ../../.venv/bin/activate
+source .venv/bin/activate
 
 python -m pytest tests/test_parser.py tests/test_prompt_solution_split.py tests/test_quality_gate.py -q
 

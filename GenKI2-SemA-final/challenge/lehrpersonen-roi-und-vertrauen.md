@@ -1,8 +1,8 @@
-# Lehrpersonen, ROI und Vertrauen
+# Lehrpersonen, Return on Investment (ROI) und Vertrauen
 
 ## Zweck
 
-Dieses Dokument ergänzt die technischen und dokumentzentrierten Herausforderungen um die besondere Arbeitssituation von Lehrpersonen. Es zeigt, weshalb der ROI nicht nur als Zeitersparnis pro 10 Fragen beschrieben werden darf, sondern auch Review-Aufwand, Vertrauenslogik und versteckte Handoffs berücksichtigen muss.
+Dieses Dokument ergänzt die technischen und dokumentzentrierten Herausforderungen um die besondere Arbeitssituation von Lehrpersonen. Es zeigt, weshalb der Return on Investment (ROI) nicht nur als Zeitersparnis pro 10 Fragen beschrieben werden darf, sondern auch Review-Aufwand, Vertrauenslogik und versteckte Handoffs berücksichtigen muss.
 
 ## Wirtschaftliche Logik: Unternehmen vs. Schule
 
@@ -15,7 +15,7 @@ Dieses Dokument ergänzt die technischen und dokumentzentrierten Herausforderung
 
 ## Nutzen für Lehrpersonen: Motivation, Einstieg, Vertrauen
 
-- Das manuelle Erfassen von Prüfungen in Moodle wird von vielen Lehrpersonen als monoton und unattraktiv erlebt.
+- Das manuelle Erfassen von Prüfungen in Moodle wird von vielen Lehrpersonen als kompliziert, monoton und unattraktiv erlebt.
 - Entsprechend beginnen manche mit der Digitalisierung von Prüfungen gar nicht erst, obwohl der spätere Korrekturprozess in Moodle Zeit spart.
 - Zusätzlich sind viele Prüfungsformate in Moodle wenig bekannt, was Unsicherheit erzeugt.
 - Ein einfacher Transformations-Workflow (analoge Prüfung rein, digitalisierte Moodle-Version raus) senkt diese Einstiegshürde deutlich.

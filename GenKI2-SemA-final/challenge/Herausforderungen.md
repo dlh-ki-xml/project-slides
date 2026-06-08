@@ -8,6 +8,10 @@ Die Quelldateien sind fachlich nicht neutral strukturiert. Für eine zuverlässi
 - Einige Vorlagen codieren die Lösung nur visuell, zum Beispiel über rote Schrift wie in `Geschichte-Beispiel-Loesungen-rot.png`. Diese Information geht bei einer reinen Textverarbeitung leicht verloren.
 - Manche Aufgaben sind didaktisch mehrdeutig und lassen mehrere sinnvolle Moodle-Formate zu. Das betrifft nicht nur die technische Umsetzung, sondern auch den späteren Korrekturaufwand.
 - Ein typisches Beispiel dafür ist die Biologie-Aufgabe mit `Neuron-LSG-Original.png`. Dieselbe Vorlage kann als Zeichenaufgabe mit höherem Korrekturaufwand (`Neuron-Zeichnen-Beschriften.png`) oder als stärker automatisierbare Beschriftungs- bzw. Drag-and-Drop-Aufgabe (`Neuron-Beschriften.png`, `Neuron-Drag-and-Drop.png`) modelliert werden.
+- Viele analoge Aufgabenformate funktionieren im digitalen Kontext nicht gleich und müssen angepasst werden. Das heisst, dass jeder Moodle-Fragetyp eine spezifische Instruktion braucht.
+- Weiter müsste in einer Bearbeitungsmaske auch nachgefragt werden, ob die Lernenden mit Sie oder Du angesprochen werden sollen, damit die Anrede in der Frage korrekt formuliert wird.
+- Eine weitere Optimierung wäre, wenn die KI eine präzisere Aufgabenstellung vorschlagen würde, damit die Lehrperson selber entscheiden kann, ob die eigene oder die KI-Formulierung besser passt. Das betrifft insbesondere offene Fragen.
+- Weiter gibt es Fälle, wo Lehrpersonen mehrere Fragen in eine Aufgabe hinein packen. Das kann eine Hürde sein für Lernende, da sie dann schon an der Aufgabestellung scheitern können. Hier wäre es toll, wenn die KI die Aufgabe in mehrere Fragen aufteilen könnte, damit die Lernenden Schritt für Schritt durch die Aufgabe geführt werden. Die Lehrperson soll selbstverständlich entscheiden können, ob sie diese Aufteilung übernehmen möchte oder nicht.
 
 ## Visuelle und strukturelle Herausforderungen
 
