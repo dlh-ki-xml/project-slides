@@ -402,19 +402,16 @@ Nach den Resultaten folgt der Reproduktionspfad und danach die Einbettung in die
 
 <div class="two-col">
   <div class="panel">
-    <h3>Startkommando</h3>
-    <pre style="font-size: 0.46em;"><code class="language-bash">cd project-docs/project/python-skripte
-source .venv/bin/activate
-python -m pdf_to_moodle.main \
-  --exam-id deutsch-auf-p17-pdf-2026w22 \
-  --input data/input_pdfs/AUF-Grammatikpruefung-Syntax-Interpunktion.pdf \
-  --stage all</code></pre>
-    <h3>Zentrale Libraries</h3>
-    <pre style="font-size: 0.46em;"><code>PyMuPDF       PDF-Extraktion
-python-docx   DOCX-Extraktion
-pydantic      Validierung
-lxml          Moodle-XML
-pytest        Tests</code></pre>
+    <h3>Pipeline-Lauf</h3>
+    <video
+      src="media/pipeline-demo.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+      controls
+      style="width:100%; border-radius:8px; border:1px solid #d7dde5; background:#0d1117;"
+    ></video>
   </div>
   <div class="panel">
     <h3>Prüfdateien</h3>
@@ -423,28 +420,30 @@ pytest        Tests</code></pre>
 02_normalize/normalized.json    Aufgabenstruktur
 03_validate/validation_report   Quality Gate
 05_report/summary.md            Kurzstatus</code></pre>
+    <h3>Zentrale Libraries</h3>
+    <pre style="font-size: 0.46em;"><code>PyMuPDF       PDF-Extraktion
+python-docx   DOCX-Extraktion
+pydantic      Validierung
+lxml          Moodle-XML
+pytest        Tests</code></pre>
     <div class="quote-box" style="margin-top: 0.7rem;">
-      <strong>Demo-Absicht</strong><br>
-      Nicht Live-Klickstrecke, sondern nachvollziehbarer Lauf: Starten, prüfen, Ergebnis belegen.
+      <strong>Einordnung</strong><br>
+      Das Video zeigt, wie eine PDF-Prüfung durch die Pipeline läuft und welche Dateien den Lauf nachvollziehbar machen.
     </div>
   </div>
 </div>
 
-<blockquote>
-Die Folie zeigt, wie die Pipeline gestartet wird und welche Dateien danach den Lauf nachvollziehbar machen.
-</blockquote>
-
 Note:
 [⏱ 1 Min.]<br>
-Diese Folie ist keine vollständige Live-Demo, sondern ein reproduzierbarer Ausführungspfad.
+Diese Folie ist keine Live-Demo, sondern eine aufgezeichnete, reproduzierbare Ausführung.
 Die Python-Pipeline ist mit Vibecoding entstanden: Ich habe Anforderungen, Beispiele und Fehlverhalten iterativ mit Codex bearbeitet, Code erzeugt oder angepasst, Tests laufen lassen, Reports geprüft und danach die nächste Verbesserung abgeleitet.
-Das Bash-Beispiel zeigt diesen reproduzierbaren Startpunkt: `cd` wechselt in das Python-Projekt, `source .venv/bin/activate` aktiviert die lokale Umgebung, und `python -m pdf_to_moodle.main` startet die Pipeline als Modul.
-`--exam-id` benennt den Lauf und bestimmt den Run-Ordner, `--input` zeigt auf die konkrete Prüfungsdatei, und `--stage all` führt alle Stufen von Extraktion bis Report aus.
+Im Video sieht man den Start im Python-Projekt, die Aktivierung der lokalen Umgebung und den Pipeline-Aufruf als Python-Modul.
+Der Lauf erzeugt nacheinander Extraktion, Normalisierung, Validierung, XML-Export, Moodle-Gate, Review-Package und Summary.
 Die rechte Seite zeigt, wo ich nach dem Lauf prüfe: Rohtext, normalisiertes JSON, Validierungsbericht und Kurzreport.
 
 <!-- vertical -->
 
-## Ausblick: Kombination mit mmaritini
+## <i class="fas fa-brain"></i> Ausblick: Python-Backbone mit KI-Workflow-Logik
 
 <div class="two-col">
   <div class="panel">
@@ -458,16 +457,16 @@ Die rechte Seite zeigt, wo ich nach dem Lauf prüfe: Rohtext, normalisiertes JSO
   <div class="panel">
     <h3>Workflow von Martin</h3>
     <ul>
-      <li>fachliches Zielbild und Produktfluss</li>
       <li>E-Mail-Intake und Rückfragepfad</li>
-      <li>neutrales Zwischenformat und Entscheidungslogik</li>
+      <li>agentische KI-Loops für Interpretation, didaktischeOptimierung und Rückfragen</li>
+      <li>neutrales Zwischenformat (JSON) und Entscheidungslogik</li>
     </ul>
   </div>
 </div>
 
 <div class="quote-box" style="margin-top: 0.8rem;">
   <strong>Strategische Richtung</strong><br>
-  Python-Pipeline als Ausführungs-Backbone behalten und die fachliche Qualitätslogik des KI-Workflow-POC schrittweise integrieren.
+  Python-Pipeline als Ausführungs-Backbone behalten und die fachliche Qualitätslogik des KI-Workflow schrittweise integrieren.
 </div>
 
 Note:
@@ -485,42 +484,35 @@ Ich leite zur Schlussfolgerung über.
 
 <!-- vertical -->
 
-## Fazit
+## <i class="fas fa-clipboard-check"></i> Fazit
 
-- Schwachstelle im Prüfungsprozess identifiziert: manuelle Moodle-Erfassung
-- GenKI-Optimierung als lokal ausführbare Pipeline mit Prompt-, Validierungs- und Exportstufen umgesetzt
+- Prüfungen einfach digitalisiert und didaktisch optimiert statt umständlich manuell zu erfassen
+- robuste und deterministische Python-Pipeline mit prüfbaren Stages als technischer Backbone
+- KI-gestützte Interpretation, Qualitätsprüfung und Optimierung mit «Teacher in the Loop»
 - Qualitätsstufe `ready` für Geschichtsprüfung sowie Grammatik AUF in DOCX und PDF erreicht
+- ROI-Potenzial: ca. 0.5-1.0 h Pipeline und KI-Review statt ca. 6-8 h manueller Moodle-Erfassung
 - Nächster Schritt: Prompt-Dokumentation konsolidieren und KI-Workflow-Logik kontrolliert integrieren
 
 <p class="lead">Der Anhang dokumentiert Reproduktionsschritte, Architekturdetails und belegte Run-Ergebnisse.</p>
 
 Note:
 [⏱ 0.5 Min.]<br>
-Ich schliesse mit den vier Kernaussagen und verweise kurz auf den Anhang.
-
-<!-- vertical -->
-
-## Übergang in den Anhang
-
-- Hauptteil endet hier nach rund 6:50 Minuten.
-- Die restlichen Folien dienen als technische Dokumentation und Backup für Fragen.
-- Projektstand, Reproduktion und Ausbaupfad bleiben in derselben Präsentation dokumentiert.
-
-Note:
-[⏱ 0.25 Min.]<br>
-Hier stoppe ich den Pflichtteil und nutze den Anhang nur bei Bedarf.
+Ich schliesse mit den Kernaussagen und verweise kurz auf den Anhang.
+Der ROI ist bewusst als realistische Grössenordnung formuliert: Eine Prüfung durch Pipeline und anschliessende KI-Optimierung dürfte später etwa 0.5 bis 1.0 Stunden benötigen.
+Eine manuelle Erfassung in Moodle kann gut 6 bis 8 Stunden beanspruchen.
+Wichtig ist der qualitative Unterschied: Bei der manuellen Erfassung ist die Prüfung danach zwar in Moodle, aber noch nicht automatisch auf die Didaktik von Online-Prüfungen angepasst.
 
 <!-- vertical -->
 
 <h2 class="r-fit-text"><i class="fas fa-heart" aria-hidden="true"></i> Danke für Eure Aufmerksamkeit!</h2>
 <p>Ich freue mich über Kritik und Anregungen!</p>
-<div style="text-align: center; margin-top: 1.5rem;">
-<span style="font-size: 190px; color: #133a61;">
+<div style="text-align: center; margin-top: 1.5rem; margin-bottom: 2rem;">
+<span style="font-size: 120px; color: #133a61;">
   <i class="fas fa-comment-dots"></i>
 </span>
 </div>
 
-<div style="position:absolute; left:0; right:0; bottom:20px; display:flex; justify-content:space-between; align-items:flex-end; padding:0 40px; font-size:small;">
+<div style="position:absolute; left:0; right:0; bottom:8px; display:flex; justify-content:space-between; align-items:flex-end; padding:0 40px; font-size:small;">
   <div style="text-align:left;">
     <a href="mailto:thomas.lampart@students.ffhs.ch">
       <img src="../GenKI2-SemA-ZB/images/qr-mailto.svg" style="width:75px;" alt="QR-Code zur E-Mailadresse"><br>
@@ -530,6 +522,11 @@ Hier stoppe ich den Pflichtteil und nutze den Anhang nur bei Bedarf.
   <div style="text-align:center;">
     <a href="https://dlh-ki-xml.github.io/project-slides/GenKI2-SemA-final/index.html">
       <i class="fas fa-external-link-alt" aria-hidden="true"></i> slides
+    </a><br>
+    <a href="https://github.com/dlh-ki-xml/project-slides">project-slides</a><br>
+    <a href="https://github.com/dlh-ki-xml/project-docs">project-docs</a><br>
+    <a href="mailto:dlh-ki-xml@svc-ai.fyi">
+      <i class="fas fa-paper-plane"></i> Workflow: dlh-ki-xml@svc-ai.fyi
     </a>
   </div>
   <div style="text-align:right;">
@@ -544,6 +541,7 @@ Note:
 [⏱ 0.5 Min.]<br>
 Diese Folie ist der eigentliche Abschluss des Hauptteils.
 Die QR-Codes und Links führen zu E-Mail, Präsentation und den GitHub-Repositories der Projektorganisation.
+Die Adresse `dlh-ki-xml@svc-ai.fyi` ist der Workflow-Einstieg: Dort kann eine Prüfungsdatei an den angebundenen Prozess geschickt werden.
 
 ---
 
@@ -555,21 +553,21 @@ Die QR-Codes und Links führen zu E-Mail, Präsentation und den GitHub-Repositor
   <div class="panel">
     <h3>Reproduktion</h3>
     <ul>
-      <li><a href="#/7">A: Repo-Struktur für Wiederholung</a></li>
-      <li><a href="#/8">B: Minimaler Reproduktionsablauf</a></li>
-      <li><a href="#/9">C: Was wurde iterativ verbessert?</a></li>
-      <li><a href="#/10">D: Belegte Run-Ergebnisse</a></li>
-      <li><a href="#/11">E: Zielarchitektur der Kombination</a></li>
+      <li><a href="#/7/1">A: Repo-Struktur für Wiederholung</a></li>
+      <li><a href="#/7/2">B: Minimaler Reproduktionsablauf</a></li>
+      <li><a href="#/7/3">C: Was wurde iterativ verbessert?</a></li>
+      <li><a href="#/7/4">D: Belegte Run-Ergebnisse</a></li>
+      <li><a href="#/7/5">E: Zielarchitektur der Kombination</a></li>
     </ul>
   </div>
   <div class="panel">
     <h3>Hintergrund zur Pipeline</h3>
     <ul>
-      <li><a href="#/12">F: Module und Verantwortlichkeiten</a></li>
-      <li><a href="#/13">G: Zwischenformat und Quality Gate</a></li>
-      <li><a href="#/14">H: Python-Libraries</a></li>
-      <li><a href="#/15">I: Evaluation und Vergleichsreports</a></li>
-      <li><a href="#/16">J: Vibecoding-Workflow</a></li>
+      <li><a href="#/8/1">F: Module und Verantwortlichkeiten</a></li>
+      <li><a href="#/8/2">G: Zwischenformat und Quality Gate</a></li>
+      <li><a href="#/8/3">H: Python-Libraries</a></li>
+      <li><a href="#/8/4">I: Evaluation und Vergleichsreports</a></li>
+      <li><a href="#/8/5">J: Vibecoding-Workflow</a></li>
     </ul>
   </div>
 </div>
@@ -603,12 +601,10 @@ project-slides/
 - `data/runs/` enthält alle Artefakte eines konkreten Laufs.
 - `project-slides/` enthält die versionierte Präsentationsdokumentation.
 
+<p class="tiny"><a href="#/6">Zurück zur Anhangsübersicht</a></p>
+
 Note:
 Diese Folie zeigt, wo jemand im Repo einsteigen muss, um das Projekt erneut auszuführen.
-
-<br>
-
-[Zurück zur Anhangsübersicht](#/6)
 
 <!-- vertical -->
 
@@ -633,12 +629,10 @@ python -m pdf_to_moodle.main \
 
 Erwartung: In beiden Runs enthält `05_report/summary.md` den Status `quality_gate: ready`.
 
+<p class="tiny"><a href="#/6">Zurück zur Anhangsübersicht</a></p>
+
 Note:
 Das ist die kompakteste Schrittfolge, um den aktuellen Stand auf einem frischen Checkout zu prüfen.
-
-<br>
-
-[Zurück zur Anhangsübersicht](#/6)
 
 <!-- vertical -->
 
@@ -651,12 +645,10 @@ Das ist die kompakteste Schrittfolge, um den aktuellen Stand auf einem frischen 
 | PDF-Cleanup      | Header, Fusszeilen, Trennsilben                   | PDF-Run fachlich näher an DOCX gebracht |
 | Prompt-Heuristik | Rubriken und Instruktionen wurden falsch getrennt | längere Aufgabenköpfe stabilisiert      |
 
+<p class="tiny"><a href="#/6">Zurück zur Anhangsübersicht</a></p>
+
 Note:
 Diese Folie zeigt die Entwicklungslogik: kein grosser Wurf, sondern mehrere kleine, validierte Iterationen.
-
-<br>
-
-[Zurück zur Anhangsübersicht](#/6)
 
 <!-- vertical -->
 
@@ -669,13 +661,11 @@ Diese Folie zeigt die Entwicklungslogik: kein grosser Wurf, sondern mehrere klei
 | `deutsch-auf-p17-pdf-2026w22` | `01_extract/raw_text.txt`            | PDF-Extraktion sichtbar geprüft |
 | `deutsch-auf-p17-pdf-2026w22` | `03_validate/validation_report.json` | finale Bewertung `ready`        |
 
+<p class="tiny"><a href="#/6">Zurück zur Anhangsübersicht</a></p>
+
 Note:
 Der Anhang verweist absichtlich auf echte Dateien im Repo.
 Damit bleibt die Präsentation an prüfbare Artefakte gekoppelt.
-
-<br>
-
-[Zurück zur Anhangsübersicht](#/6)
 
 <!-- vertical -->
 
@@ -697,13 +687,11 @@ flowchart LR
 - fachliche Entscheidungslogik und Nutzerfluss werden ausgebaut
 - beide Stränge zahlen auf denselben Qualitätsstandard ein
 
+<p class="tiny"><a href="#/6">Zurück zur Anhangsübersicht</a></p>
+
 Note:
 Das ist die Brücke zwischen heute und dem Ausblick.
 Die Kombination bedeutet nicht, die Python-Pipeline zu ersetzen, sondern sie in einen stärkeren Produktfluss einzubetten.
-
-<br>
-
-[Zurück zur Anhangsübersicht](#/6)
 
 ---
 
@@ -723,13 +711,11 @@ Die Kombination bedeutet nicht, die Python-Pipeline zu ersetzen, sondern sie in 
 | `moodle_gate.py`     | bewertet `ready`, `needs_review`, `blocked`                         |
 | `merge_solutions.py` | führt Aufgaben- und Lösungsversion konservativ zusammen             |
 
+<p class="tiny"><a href="#/6">Zurück zur Anhangsübersicht</a></p>
+
 Note:
 Diese Folie zeigt die interne Arbeitsteilung.
 Wichtig ist: Interpretation, Validierung und Export sind getrennt, damit Fehler lokalisierbar bleiben.
-
-<br>
-
-[Zurück zur Anhangsübersicht](#/6)
 
 <!-- vertical -->
 
@@ -749,13 +735,11 @@ flowchart LR
 - Das Quality Gate verhindert, dass unsichere Fälle still als fertiger Import erscheinen.
 - Review-Hinweise sind Teil des Outputs, nicht nur interne Fehlermeldungen.
 
+<p class="tiny"><a href="#/6">Zurück zur Anhangsübersicht</a></p>
+
 Note:
 Diese Folie erklärt, weshalb die Pipeline nicht direkt von PDF/DOCX nach XML springt.
 Das Zwischenformat macht den Prozess nachvollziehbar, testbar und korrigierbar.
-
-<br>
-
-[Zurück zur Anhangsübersicht](#/6)
 
 <!-- vertical -->
 
@@ -774,13 +758,11 @@ Das Zwischenformat macht den Prozess nachvollziehbar, testbar und korrigierbar.
   Fachliche Interpretation darf KI-gestützt sein; der Export selbst bleibt kontrolliert und deterministisch.
 </div>
 
+<p class="tiny"><a href="#/6">Zurück zur Anhangsübersicht</a></p>
+
 Note:
 Diese Folie ordnet die technischen Abhängigkeiten ein.
 Die Libraries sind bewusst Standardbausteine: Dokumentextraktion, Validierung, XML und Tests.
-
-<br>
-
-[Zurück zur Anhangsübersicht](#/6)
 
 <!-- vertical -->
 
@@ -797,13 +779,11 @@ Die Libraries sind bewusst Standardbausteine: Dokumentextraktion, Validierung, X
 - Die Reports trennen Korrektheit von Importfähigkeit.
 - Offene Deltas bleiben sichtbar statt in einem Gesamtscore zu verschwinden.
 
+<p class="tiny"><a href="#/6">Zurück zur Anhangsübersicht</a></p>
+
 Note:
 Diese Folie erklärt, wie Resultate belegt werden.
 Sie ist wichtig, falls gefragt wird, woher die Scores und Aussagen auf den Resultatfolien stammen.
-
-<br>
-
-[Zurück zur Anhangsübersicht](#/6)
 
 <!-- vertical -->
 
@@ -822,10 +802,8 @@ flowchart LR
 - Codex unterstützte bei Implementierung, Testfällen, Reports und Dokumentation.
 - Jede Verbesserung wurde über lokale Tests oder konkrete Run-Ergebnisse überprüft.
 
+<p class="tiny"><a href="#/6">Zurück zur Anhangsübersicht</a></p>
+
 Note:
 Diese Folie beschreibt, wie die Python-Pipeline entstanden ist.
 Vibecoding bedeutet hier nicht blindes Generieren, sondern iteratives Arbeiten mit Anforderungen, Tests, Fehleranalyse und überprüfbaren Ergebnissen.
-
-<br>
-
-[Zurück zur Anhangsübersicht](#/6)
