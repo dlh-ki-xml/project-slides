@@ -5,7 +5,7 @@
     </a>
   </p>
 
-  <h2>Prüfungen reproduzierbar in Moodle-XML überführen</h2>
+  <h1>Prüfungen reproduzierbar in Moodle-XML überführen</h1>
   <h5>11. Juni 2026</h5>
 
   <p>
@@ -26,7 +26,7 @@
 
 Note:
 [⏱ 1 Min.]<br>
-Ich öffne mit dem Nutzen: weniger manuelle Moodle-Erfassung, aber weiterhin prüfbar und reproduzierbar.
+Herzlich willkommen zu meiner Präsentation. Ich möchte Euch unser Projekt vorstellen, bei dem analoge Prüfungen im Handumdrehen in Moodleprüfungen überführt werden können. Ihr habt richtig gehört, mit uns meine ich zwei Kollegen mit denen ich seit anfangs Jahr an diesem Projekt rumstudiere. langfristig soll es über den Kanton teilfinanziert werden.
 
 ---
 
@@ -85,7 +85,7 @@ Relevant ist nicht bloss ein Importformat, sondern ein Prozess, der Akzeptanz, Q
 
 <!-- vertical -->
 
-## <i class="fas fa-chalkboard-teacher"></i> Was bringt das Lehrpersonen?
+<h2 class="r-fit-text"> <i class="fas fa-chalkboard-teacher"></i> Was soll der ganz konkrete Nutzen für Lehrpersonen sein?</h2>
 
 <div class="two-col">
   <div class="panel">
@@ -93,8 +93,8 @@ Relevant ist nicht bloss ein Importformat, sondern ein Prozess, der Akzeptanz, Q
     <ul>
       <li>bestehende Prüfungen einfach digitalisieren, statt umständlich zu erfassen</li>
       <li>Moodle-XML nutzen, ohne XML-Details kennen zu müssen</li>
-      <li>Unsicherheiten über Review-Hinweise sichtbar machen</li>
-      <li>didaktische Kontrolle trotz KI-Unterstützung bei der Lehrperson belassen</li>
+      <li>Unsicherheiten und didaktische Kontrolle über Review-Hinweise selber steuern (Teacher in the Loop)</li>
+      <li>RAC </li>
     </ul>
   </div>
   <div class="panel">
@@ -410,6 +410,8 @@ Nach den Resultaten folgt der Reproduktionspfad und danach die Einbettung in die
       loop
       playsinline
       controls
+      onloadedmetadata="this.playbackRate = 2.0"
+      onplay="this.playbackRate = 2.0"
       style="width:100%; border-radius:8px; border:1px solid #d7dde5; background:#0d1117;"
     ></video>
   </div>
