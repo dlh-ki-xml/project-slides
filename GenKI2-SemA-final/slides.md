@@ -26,7 +26,7 @@
 
 Note:
 [⏱ 1 Min.]<br>
-Herzlich willkommen zu meiner Präsentation. Ich möchte Euch unser Projekt vorstellen, bei dem analoge Prüfungen im Handumdrehen in Moodleprüfungen überführt werden können. Ihr habt richtig gehört, mit uns meine ich zwei Kollegen mit denen ich seit anfangs Jahr an diesem Projekt rumstudiere. langfristig soll es über den Kanton teilfinanziert werden.
+Herzlich willkommen zu meiner Präsentation. Ich möchte Euch unser Projekt vorstellen, bei dem analoge Prüfungen im Handumdrehen in Moodle-Prüfungen überführt werden können. Mit «uns» meine ich Silvio Fuchs (Lehrperson für Allgemeinbildung) und Martin (Informatiker), mit denen ich seit Anfang Jahr an diesem Projekt arbeite. Langfristig soll es über den Kanton teilfinanziert werden.
 
 ---
 
@@ -94,7 +94,7 @@ Relevant ist nicht bloss ein Importformat, sondern ein Prozess, der Akzeptanz, Q
       <li>bestehende Prüfungen einfach digitalisieren, statt umständlich zu erfassen</li>
       <li>Moodle-XML nutzen, ohne XML-Details kennen zu müssen</li>
       <li>Unsicherheiten und didaktische Kontrolle über Review-Hinweise selber steuern (Teacher in the Loop)</li>
-      <li>RAC </li>
+      <li>RAG: relevante Informationen (Skripte, Lernziele  ) gezielt einbeziehen</li>
     </ul>
   </div>
   <div class="panel">
@@ -103,7 +103,7 @@ Relevant ist nicht bloss ein Importformat, sondern ein Prozess, der Akzeptanz, Q
       <li>vorhandene Prüfungen werden zum Einstiegspunkt</li>
       <li>der Nutzen entsteht sofort im Arbeitsalltag</li>
       <li>JSON dient als prüfbarer Stabilitätsanker</li>
-      <li>Konvertierbar in weitere Formate (z.B. für ILIAS)</li>
+      <li>in weitere Formate konvertierbar, z.&nbsp;B. für ILIAS</li>
     </ul>
   </div>
 </div>
@@ -367,7 +367,7 @@ Die drei Prüfungen zeigen, dass der Workflow an echten Dokumenten geschärft wu
   <div class="panel">
     <h3>Messpunkt</h3>
     <ul>
-      <li>Referenzvergleich für Geschichtsprüfung 1</li>
+      <li>Referenzvergleich für Geschichtsprüfung</li>
       <li>bewertet: XML-Validität, Fragen, Typen, Punkte und Textabdeckung</li>
       <li>Report: `xml-reference-comparison.md`</li>
     </ul>
@@ -460,7 +460,7 @@ Die rechte Seite zeigt, wo ich nach dem Lauf prüfe: Rohtext, normalisiertes JSO
     <h3>Workflow von Martin</h3>
     <ul>
       <li>E-Mail-Intake und Rückfragepfad</li>
-      <li>agentische KI-Loops für Interpretation, didaktischeOptimierung und Rückfragen</li>
+      <li>agentische KI-Loops für Interpretation, didaktische Optimierung und Rückfragen</li>
       <li>neutrales Zwischenformat (JSON) und Entscheidungslogik</li>
     </ul>
   </div>
@@ -468,7 +468,7 @@ Die rechte Seite zeigt, wo ich nach dem Lauf prüfe: Rohtext, normalisiertes JSO
 
 <div class="quote-box" style="margin-top: 0.8rem;">
   <strong>Strategische Richtung</strong><br>
-  Python-Pipeline als Ausführungs-Backbone behalten und die fachliche Qualitätslogik des KI-Workflow schrittweise integrieren.
+ Python-Pipeline als Ausführungs-Backbone behalten und die fachliche Qualitätslogik des KI-Workflows schrittweise integrieren.
 </div>
 
 Note:
@@ -478,7 +478,7 @@ Die Kombination ist stark: technische Reproduzierbarkeit von thomtomi plus fachl
 
 ---
 
-# <i class="fas fa-check-circle"></i> Abschluss
+# <i class="fas fa-check-circle"></i> Fazit
 
 Note:
 [⏱ 0.25 Min.]<br>
@@ -486,22 +486,72 @@ Ich leite zur Schlussfolgerung über.
 
 <!-- vertical -->
 
-## <i class="fas fa-clipboard-check"></i> Fazit
-
-- Prüfungen einfach digitalisiert und didaktisch optimiert statt umständlich manuell zu erfassen
+- Prüfungen einfach digitalisieren und didaktisch optimieren statt umständlich manuell zu erfassen
 - robuste und deterministische Python-Pipeline mit prüfbaren Stages als technischer Backbone
 - KI-gestützte Interpretation, Qualitätsprüfung und Optimierung mit «Teacher in the Loop»
-- Qualitätsstufe `ready` für Geschichtsprüfung sowie Grammatik AUF in DOCX und PDF erreicht
-- ROI-Potenzial: ca. 0.5-1.0 h Pipeline und KI-Review statt ca. 6-8 h manueller Moodle-Erfassung
-- Nächster Schritt: Prompt-Dokumentation konsolidieren und KI-Workflow-Logik kontrolliert integrieren
+- 94.5 % Übereinstimmung mit der Referenz-XML in der Geschichtsprüfung; Grammatikprüfungen als Aufgaben- und Lösungsversion in DOCX/PDF erfolgreich verarbeitet
+- Nächster Schritt: agentischer KI-Workflow systematisch aufbauen und in die Pipeline integrieren
 
-<p class="lead">Der Anhang dokumentiert Reproduktionsschritte, Architekturdetails und belegte Run-Ergebnisse.</p>
+<svg viewBox="0 0 1280 310" role="img" aria-label="ROI-Vergleich als Saeulendiagramm fuer Aufwand und Kosten" style="width:100%; max-height:310px;">
+  <style>
+    .axis { stroke:#53606d; stroke-width:2; }
+    .grid { stroke:#d7dde5; stroke-width:1; }
+    .title { fill:#17324d; font-size:26px; font-weight:700; }
+    .label { fill:#17324d; font-size:20px; font-weight:700; }
+    .tick { fill:#53606d; font-size:18px; }
+    .manual { fill:#d96c4a; }
+    .ki { fill:#4d9b7f; }
+    .value { fill:#17324d; font-size:20px; font-weight:700; }
+  </style>
+
+  <text x="250" y="30" text-anchor="middle" class="title">Zeitaufwand</text>
+  <text x="930" y="30" text-anchor="middle" class="title">Lohnkosten bei CHF 150/h</text>
+
+  <line x1="105" y1="250" x2="520" y2="250" class="axis" />
+  <line x1="105" y1="50" x2="105" y2="250" class="axis" />
+  <line x1="105" y1="200" x2="520" y2="200" class="grid" />
+  <line x1="105" y1="150" x2="520" y2="150" class="grid" />
+  <line x1="105" y1="100" x2="520" y2="100" class="grid" />
+  <line x1="105" y1="50" x2="520" y2="50" class="grid" />
+  <text x="78" y="256" text-anchor="end" class="tick">0 h</text>
+  <text x="78" y="206" text-anchor="end" class="tick">2 h</text>
+  <text x="78" y="156" text-anchor="end" class="tick">4 h</text>
+  <text x="78" y="106" text-anchor="end" class="tick">6 h</text>
+  <text x="78" y="56" text-anchor="end" class="tick">8 h</text>
+
+  <rect x="190" y="50" width="90" height="200" rx="4" class="manual" />
+  <rect x="350" y="231" width="90" height="19" rx="4" class="ki" />
+  <text x="235" y="42" text-anchor="middle" class="value">8 h</text>
+  <text x="395" y="224" text-anchor="middle" class="value">0.75 h</text>
+  <text x="235" y="285" text-anchor="middle" class="label">manuell</text>
+  <text x="395" y="285" text-anchor="middle" class="label">KI-gestützt</text>
+
+  <line x1="735" y1="250" x2="1150" y2="250" class="axis" />
+  <line x1="735" y1="50" x2="735" y2="250" class="axis" />
+  <line x1="735" y1="200" x2="1150" y2="200" class="grid" />
+  <line x1="735" y1="150" x2="1150" y2="150" class="grid" />
+  <line x1="735" y1="100" x2="1150" y2="100" class="grid" />
+  <line x1="735" y1="50" x2="1150" y2="50" class="grid" />
+  <text x="705" y="256" text-anchor="end" class="tick">0</text>
+  <text x="705" y="206" text-anchor="end" class="tick">300</text>
+  <text x="705" y="156" text-anchor="end" class="tick">600</text>
+  <text x="705" y="106" text-anchor="end" class="tick">900</text>
+  <text x="705" y="56" text-anchor="end" class="tick">1200 CHF</text>
+
+  <rect x="820" y="50" width="90" height="200" rx="4" class="manual" />
+  <rect x="980" y="231" width="90" height="19" rx="4" class="ki" />
+  <text x="865" y="42" text-anchor="middle" class="value">CHF 1200</text>
+  <text x="1025" y="224" text-anchor="middle" class="value">CHF 112.50</text>
+  <text x="865" y="285" text-anchor="middle" class="label">manuell</text>
+  <text x="1025" y="285" text-anchor="middle" class="label">KI-gestützt</text>
+</svg>
 
 Note:
 [⏱ 0.5 Min.]<br>
-Ich schliesse mit den Kernaussagen und verweise kurz auf den Anhang.
+Ich schliesse mit den Kernaussagen und mache das ROI-Potenzial in Zeit und Kosten sichtbar.
 Der ROI ist bewusst als realistische Grössenordnung formuliert: Eine Prüfung durch Pipeline und anschliessende KI-Optimierung dürfte später etwa 0.5 bis 1.0 Stunden benötigen.
-Eine manuelle Erfassung in Moodle kann gut 6 bis 8 Stunden beanspruchen.
+Eine manuelle Erfassung in Moodle kann gut 7 bis 9 Stunden beanspruchen.
+Bei einem durchschnittlichen Stundenlohn von 150 Franken entspricht das etwa 75 bis 150 Franken mit Pipeline gegenüber 1050 bis 1350 Franken manuell.
 Wichtig ist der qualitative Unterschied: Bei der manuellen Erfassung ist die Prüfung danach zwar in Moodle, aber noch nicht automatisch auf die Didaktik von Online-Prüfungen angepasst.
 
 <!-- vertical -->
