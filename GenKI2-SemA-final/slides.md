@@ -26,7 +26,7 @@
 
 Note:
 [⏱ 1 Min.]<br>
-Herzlich willkommen zu meiner Präsentation. Ich möchte Euch unser Projekt vorstellen, bei dem analoge Prüfungen im Handumdrehen in Moodle-Prüfungen überführt werden können. Mit «uns» meine ich Silvio Fuchs (Lehrperson für Allgemeinbildung) und Martin (Informatiker), mit denen ich seit Anfang Jahr an diesem Projekt arbeite. Langfristig soll es über den Kanton teilfinanziert werden.
+Herzlich willkommen zu meiner Präsentation. Ich möchte Euch unser Projekt vorstellen, bei dem analoge Prüfungen im Handumdrehen in Moodle-Prüfungen überführt werden können. Mit «uns» meine ich Silvio Fuchs (Lehrperson für Allgemeinbildung) und Martin Margesin (Informatiker), mit denen ich seit Anfang Jahr an diesem Projekt arbeite. Langfristig soll es über den Kanton teilfinanziert werden.
 
 ---
 
@@ -497,7 +497,7 @@ Ich leite zur Schlussfolgerung über.
 Note:
 [⏱ 0.5 Min.]<br>
 Ich schliesse mit den Kernaussagen und mache das ROI-Potenzial in Zeit und Kosten sichtbar.
-Der ROI ist bewusst als realistische Grössenordnung formuliert: Eine Prüfung durch Pipeline und anschliessende KI-Optimierung dürfte später etwa 0.5 bis 1.0 Stunden benötigen.
+Der ROI ist bewusst als realistische Grössenordnung formuliert: Eine Prüfung durch Pipeline und anschliessende KI-Optimierung dürfte später etwa 0.5 bis 1.0 Stunden benötigen -> <strong>Faktor 10</strong>.
 Eine manuelle Erfassung in Moodle kann gut 7 bis 9 Stunden beanspruchen.
 Bei einem durchschnittlichen Stundenlohn von 150 Franken entspricht das etwa 75 bis 150 Franken mit Pipeline gegenüber 1050 bis 1350 Franken manuell.
 Wichtig ist der qualitative Unterschied: Bei der manuellen Erfassung ist die Prüfung danach zwar in Moodle, aber noch nicht automatisch auf die Didaktik von Online-Prüfungen angepasst.
