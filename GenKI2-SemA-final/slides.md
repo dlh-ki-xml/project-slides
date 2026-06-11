@@ -15,7 +15,7 @@
     </small>
   </p>
 
-  <p class="title-subline" style="font-size: 0.52em;">Prüfungen lokal, prüfbar und reproduzierbar in Moodle-XML überführen.</p>
+  <p class="title-subline" style="font-size: 0.52em;">Prüfungen gesteuert und reproduzierbar in Moodle-XML überführen.</p>
 
   <p>
     <a href="https://www.ffhs.ch" target="_blank">
